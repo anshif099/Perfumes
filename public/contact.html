@@ -285,6 +285,31 @@
   }
 
   /* --- 7. FOOTER --- */
+  /* --- 6. NEWSLETTER --- */
+  .newsletter {
+    padding: 80px 0; background: #0f0f01; margin-top: 40px;
+  }
+  .newsletter-inner { display: flex; align-items: stretch; gap: 0; background: #ddc213; border-radius: 16px; overflow: hidden; box-shadow: var(--card-shadow); }
+  .nl-left { flex: 1; min-height: 300px; }
+  .nl-left img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  
+  .nl-panel {
+    flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .nl-panel h2 { font-family: Georgia, serif; font-size: 32px; margin: 0 0 12px; }
+  .nl-sub { margin: 0 0 24px; color: var(--muted); line-height: 1.6; }
+  
+  .nl-form { display: flex; gap: 10px; width: 100%; }
+  .nl-form input {
+    flex: 1; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; outline: none; transition: border 0.2s;
+  }
+  .nl-form input:focus { border-color: var(--accent); }
+  .btn-sub {
+    background: #111; color: #fff; padding: 12px 24px; border-radius: 8px; 
+    border: 0; font-weight: 700; cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-sub:hover { opacity: 0.9; }
+  .nl-note { font-size: 12px; color: #9ca3af; margin-top: 16px; }
   .site-footer {
     background: #111; color: #d1d5db; padding: 60px 0 30px; margin-top: 0;
   }
@@ -486,6 +511,25 @@
     <div class="container">
       <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.6051464370395!2d55.31262!3d25.21369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5b5b5b5b5b5b%3A0x5b5b5b5b5b5b5b5b!2sOud%20Metha%2C%20Dubai!5e0!3m2!1sen!2sae!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="nl-left">
+          <img src="/images/image11.jpeg" alt="newsletter bottle" loading="lazy" />
+        </div>
+        <div class="nl-panel">
+          <h2>Subscribe to our Newsletter</h2>
+          <p class="nl-sub">Get the latest news about perfume tips, new products, and exclusive offers directly to your inbox.</p>
+          <form class="nl-form" action="#" onsubmit="alert('Subscribed!'); return false;">
+            <input type="email" placeholder="Enter your email" aria-label="email" required />
+            <button class="btn-sub" type="submit">SUBSCRIBE</button>
+          </form>
+          <p class="nl-note">No spam, only quality scents. Unsubscribe anytime.</p>
+        </div>
       </div>
     </div>
   </section>
