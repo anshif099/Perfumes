@@ -73,7 +73,7 @@ const HeroCarousel = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
                 className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 whitespace-pre-line ${slides[currentSlide].textColor} drop-shadow-2xl`}
-                style={{ textShadow: "0 6px 16px rgba(0,0,0,0.45)" }}
+                style={{ textShadow: "0 6px 16px rgba(0,0,0,0.45)", fontFamily: "'Playfair Display', serif" }}
               >
                 {slides[currentSlide].title}
               </motion.h1>
@@ -83,6 +83,7 @@ const HeroCarousel = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className={`text-lg md:text-xl mb-8 ${slides[currentSlide].textColor} opacity-95`}
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {slides[currentSlide].description}
               </motion.p>

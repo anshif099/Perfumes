@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="images/image1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Product - Beek Perfumes</title>
+  <style>
+    /* --- RESET + VARIABLES --- */
+    :root {
+      --accent: #d9a93b;
+      --accent-dark: #c8892f;
+      --muted: #6b7180;
+      --text: #111827;
+      --bg: #fff;
+      --card-shadow: 0 10px 30px rgba(22, 28, 36, 0.06);
+      --radius: 14px;
+      --max-width: 1200px;
+      --container-padding: 24px;
+      --header-height: 76px;
+      font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+    body { 
+      background: var(--bg); 
+      color: var(--text); 
+      -webkit-font-smoothing: antialiased; 
+      padding-top: var(--header-height);
+    }
+
+    .container {
+      width: var(--max-width);
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    /* --- HEADER --- */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      height: var(--header-height);
+      transition: all 0.3s ease;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; z-index: 1001; }
+    .logo { height: 40px; width: auto; }
+    .brand-text { font-weight: 700; color: #111; letter-spacing: 0.2px; font-size: 18px; }
+
+    .main-nav { display: block; }
+    .main-nav ul {
+      display: flex; list-style: none; gap: 32px; margin: 0; padding: 0; align-items: center;
+    }
+    .main-nav a {
+      color: #111; text-decoration: none; font-weight: 500; font-size: 15px; padding: 8px; transition: color 0.2s;
+    }
+    .main-nav a:hover, .main-nav li.active a { color: var(--accent-dark); font-weight: 700; }
+
+    .header-icons { display: flex; align-items: center; gap: 8px; z-index: 1001; }
+    .icon-btn {
+      background: transparent; border: 0; padding: 8px; border-radius: 50%; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .icon-btn:hover { background: rgba(0,0,0,0.05); }
+    .icon-btn svg { stroke: #111; }
+
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1002; }
+    .menu-toggle svg { stroke: #111; width: 24px; height: 24px; }
+
+    /* --- PRODUCT SECTION --- */
+    .product-section {
+      padding: 60px 0;
+      margin-top: 20px;
+    }
+
+    .product-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    /* Product Images */
+    .product-image-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .product-main-image {
+      width: 100%;
+      height: 500px;
+      background: #f3f4f6;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+
+    .product-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-ribbon {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .product-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: 100px;
+      background: #f3f4f6;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumbnail.active {
+      border-color: var(--accent);
+    }
+
+    /* Product Details */
+    .product-details h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+
+    .breadcrumb {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .product-description {
+      font-family: 'Inter', sans-serif;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    /* Scent Profile */
+    .scent-profile {
+      margin-bottom: 32px;
+    }
+
+    .scent-profile h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      color: var(--accent);
+    }
+
+    .scent-item {
+      background: #f9fafb;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .scent-item-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .scent-item-notes {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Size Selection */
+    .size-section {
+      margin-bottom: 24px;
+    }
+
+    .size-section h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 12px;
+    }
+
+    .size-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .size-option {
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fff;
+    }
+
+    .size-option:hover {
+      border-color: var(--accent);
+    }
+
+    .size-option.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .size-option-ml {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .size-option-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .size-option.active .size-option-label {
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* Price & Quantity */
+    .price-qty-section {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .product-price {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .price-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .qty-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 12px;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .qty-input {
+      width: 50px;
+      text-align: center;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* Add to Cart Section */
+    .product-actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      flex: 1;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      box-shadow: 0 4px 12px rgba(217, 169, 59, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f3f4f6;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #e5e7eb;
+    }
+
+    .btn-icon {
+      background: none;
+      border: 1px solid #e5e7eb;
+      color: var(--text);
+      padding: 14px;
+      flex: 0;
+    }
+
+    /* Product Benefits */
+    .product-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .benefit {
+      text-align: center;
+    }
+
+    .benefit-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .benefit-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .benefit-text {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Collapsible Sections */
+    .collapsible-section {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .collapsible-header {
+      background: #f9fafb;
+      padding: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .collapsible-header:hover {
+      background: #f3f4f6;
+    }
+
+    .collapsible-icon {
+      font-size: 20px;
+      transition: transform 0.2s;
+    }
+
+    .collapsible-content {
+      display: none;
+      padding: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .collapsible-content.active {
+      display: block;
+    }
+
+    .collapsible-icon.active {
+      transform: rotate(180deg);
+    }
+
+
+    /* --- NEWSLETTER --- */
+    .newsletter {
+      padding: 80px 0;
+      background: #0f0f01;
+      margin-top: 40px;
+    }
+
+    .newsletter-inner {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      background: #ddc213;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    .nl-left {
+      flex: 1;
+      min-height: 300px;
+    }
+
+    .nl-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nl-panel {
+      flex: 1;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .nl-panel h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      margin: 0 0 12px;
+    }
+
+    .nl-sub {
+      font-family: 'Inter', sans-serif;
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .nl-form {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .nl-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .nl-form input:focus { border-color: var(--accent); }
+
+    .btn-sub {
+      background: #111;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-sub:hover { opacity: 0.9; }
+
+    .nl-note {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 16px;
+    }
+
+    /* --- FOOTER --- */
+    .site-footer {
+      background: #111;
+      color: #d1d5db;
+      padding: 60px 0 30px;
+      margin-top: 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logo { height: 40px; margin-bottom: 20px; }
+    .footer-address { line-height: 1.8; font-size: 14px; }
+    .footer-phone { display: block; margin-top: 8px; color: #fff; font-weight: 600; }
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .footer-col a {
+      display: block;
+      color: #9ca3af;
+      margin: 10px 0;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: #fff; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 24px;
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    .legal-links { display: flex; gap: 20px; }
+    .legal-links a { color: #6b7280; text-decoration: none; }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .product-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .product-image {
+        height: 400px;
+      }
+
+      .product-details h1 {
+        font-size: 36px;
+      }
+
+      .newsletter-inner {
+        flex-direction: column;
+      }
+
+      .nl-left {
+        min-height: 250px;
+      }
+
+      .nl-panel {
+        padding: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .nl-form {
+        flex-direction: column;
+      }
+
+      .btn-sub {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .legal-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="brand">
+        <img src="images/image1.png" alt="Beek Perfumes logo" class="logo" />
+        <span class="brand-text">BEEK</span>
+      </div>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li class="active"><a href="/shop.html">Collections</a></li>
+          <li><a href="/ourstory.html">Our Story</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-icons">
+        <button class="icon-btn" aria-label="profile">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <button class="icon-btn" aria-label="search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button id="headerCartBtn" class="icon-btn" aria-label="cart" title="View cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6h15l-1.5 9h-12z"></path>
+            <circle cx="9" cy="20" r="1"></circle>
+            <circle cx="18" cy="20" r="1"></circle>
+          </svg>
+          <span id="cartCountHeader" style="background:#ddc213;color:#000;padding:2px 7px;border-radius:999px;margin-left:8px;font-weight:700;font-size:12px;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRODUCT DETAILS -->
+  <main>
+    <section class="product-section">
+      <div class="container">
+        <div class="product-container">
+          <!-- Images -->
+          <div class="product-image-gallery">
+            <div class="product-main-image">
+              <img id="productImg" src="/images/image3.jpeg" alt="Product" />
+              <div class="product-ribbon" id="productRibbon">New Arrival</div>
+            </div>
+            <div class="product-thumbnails" id="productThumbnails">
+              <div class="thumbnail active" data-src="/images/image3.jpeg">
+                <img src="/images/image3.jpeg" alt="View 1" />
+              </div>
+              <div class="thumbnail" data-src="/images/image4.jpeg">
+                <img src="/images/image4.jpeg" alt="View 2" />
+              </div>
+              <div class="thumbnail" data-src="/images/image5.jpeg">
+                <img src="/images/image5.jpeg" alt="View 3" />
+              </div>
+              <div class="thumbnail" data-src="/images/image6.jpeg">
+                <img src="/images/image6.jpeg" alt="View 4" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div class="product-details">
+            <div class="breadcrumb">Home / Collections / <span id="breadcrumbTitle">Noir Elegance</span></div>
+            <h1 id="productTitle">Noir Elegance</h1>
+
+            <p class="product-description" id="productDesc">
+              A sophisticated symphony of sensuality and grace. Noir Elegance captures the essence of timeless beauty, weaving together rare botanicals and precious essences to create an unforgettable olfactory journey. For those who embrace the art of refined living.
+            </p>
+
+            <!-- Scent Profile -->
+            <div class="scent-profile">
+              <h3>Scent Profile</h3>
+              <div class="scent-item">
+                <div class="scent-item-title">⭐ Top Notes</div>
+                <div class="scent-item-notes">Bergamot • Pink Pepper • Mandarin</div>
+              </div>
+              <div class="scent-item">
+                <div class="scent-item-title">♥ Heart Notes</div>
+                <div class="scent-item-notes">Jasmine • Rose • Ylang Ylang</div>
+              </div>
+              <div class="scent-item">
+                <div class="scent-item-title">⬇ Base Notes</div>
+                <div class="scent-item-notes">Amber • Vanilla • Sandalwood</div>
+              </div>
+            </div>
+
+            <!-- Size Selection -->
+            <div class="size-section">
+              <h4>Select Size</h4>
+              <div class="size-options">
+                <div class="size-option active" data-size="30">
+                  <div class="size-option-ml">30ml</div>
+                  <div class="size-option-label">Travel Size</div>
+                </div>
+                <div class="size-option" data-size="50">
+                  <div class="size-option-ml">50ml</div>
+                  <div class="size-option-label">Standard</div>
+                </div>
+                <div class="size-option" data-size="100">
+                  <div class="size-option-ml">100ml</div>
+                  <div class="size-option-label">Signature</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price & Quantity -->
+            <div class="price-qty-section">
+              <div>
+                <div class="product-price" id="productPrice">$139</div>
+                <div class="price-note">Free shipping over $100</div>
+              </div>
+              <div style="flex:1;text-align:right;">
+                <div style="font-size:13px;color:var(--muted);margin-bottom:8px;">Quantity:</div>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="decreaseQty()">−</button>
+                  <input type="number" class="qty-input" id="qtyInput" value="1" min="1" />
+                  <button class="qty-btn" onclick="increaseQty()">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add to Cart -->
+            <div class="product-actions">
+              <button class="btn btn-primary" id="addToCartBtn">Add to Cart</button>
+              <button class="btn btn-icon" title="Wishlist">♡</button>
+              <button class="btn btn-icon" title="Share">⤴</button>
+            </div>
+
+            <!-- Benefits -->
+            <div class="product-benefits">
+              <div class="benefit">
+                <div class="benefit-icon">🚚</div>
+                <div class="benefit-title">Free Shipping</div>
+                <div class="benefit-text">Over $100</div>
+              </div>
+              <div class="benefit">
+                <div class="benefit-icon">✓</div>
+                <div class="benefit-title">Authentic</div>
+                <div class="benefit-text">100% Genuine</div>
+              </div>
+              <div class="benefit">
+                <div class="benefit-icon">↩</div>
+                <div class="benefit-title">30-Day Returns</div>
+                <div class="benefit-text">Easy Returns</div>
+              </div>
+            </div>
+
+            <!-- Collapsible Sections -->
+            <div class="collapsible-section">
+              <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <span>Ingredients</span>
+                <span class="collapsible-icon">▼</span>
+              </div>
+              <div class="collapsible-content">
+                <p>Alcohol, Fragrance (Parfum), Aqua, Linalool, Limonene, Geraniol, Citronellol, Eugenol, Isoeugenol, Benzyl Salicylate, Cinnamyl Alcohol, Coumarin, Benzyl Benzoate.</p>
+              </div>
+            </div>
+
+            <div class="collapsible-section">
+              <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <span>Shipping &amp; Delivery</span>
+                <span class="collapsible-icon">▼</span>
+              </div>
+              <div class="collapsible-content">
+                <p>We ship worldwide with reliable carriers. Standard delivery takes 5-7 business days. Express shipping available. All orders are carefully packaged to ensure safe delivery.</p>
+              </div>
+            </div>
+
+            <div class="collapsible-section">
+              <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                <span>Returns &amp; Exchanges</span>
+                <span class="collapsible-icon">▼</span>
+              </div>
+              <div class="collapsible-content">
+                <p>We offer a hassle-free 30-day return policy. Items must be unused and in original packaging. Contact our support team to initiate a return or exchange.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="nl-left">
+          <img src="images/image11.jpeg" alt="newsletter perfume bottle" loading="lazy" />
+        </div>
+        <div class="nl-panel">
+          <h2>Subscribe to our Newsletter</h2>
+          <p class="nl-sub">Get the latest news about perfume tips, new products, and exclusive offers directly to your inbox.</p>
+          <form class="nl-form" action="#" onsubmit="alert('Subscribed!'); return false;">
+            <input type="email" placeholder="Enter your email" aria-label="email" required />
+            <button class="btn-sub" type="submit">SUBSCRIBE</button>
+          </form>
+          <p class="nl-note">No spam, only quality scents. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col" style="flex: 2;">
+          <img src="images/image1.png" alt="logo" class="footer-logo" />
+          <div class="footer-address">
+            BK Tower, Oud Metha, Dubai,<br/>United Arab Emirates<br/>
+            <span class="footer-phone">+971 (0) 55 114 1144</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="/">Home</a>
+          <a href="/shop.html">Collections</a>
+          <a href="/ourstory.html">Our Story</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <a href="#">Shipping Policy</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2025 Beek Perfumes. All rights reserved</div>
+        <div class="legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART MODAL -->
+  <div id="cartModal" class="modal" style="display:none;position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:2000;">
+    <div class="modal-content" style="background:#fff;border-radius:12px;padding:18px;width:92%;max-width:760px;display:flex;gap:18px;align-items:stretch;flex-direction:column;">
+      <button id="cartClose" style="align-self:flex-end;background:none;border:0;font-size:22px;cursor:pointer;">&times;</button>
+      <h3 style="margin:0 0 12px;font-family:Georgia,serif;">Your Cart</h3>
+      <div id="cartItems" style="width:100%;max-height:320px;overflow:auto;margin-bottom:12px;"></div>
+      <div style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <div style="font-weight:700">Total: <span id="cartTotal">0</span></div>
+        <button id="checkoutBtn" class="btn btn-primary">Checkout</button>
+      </div>
+
+      <form id="checkoutForm" style="display:none;margin-top:12px;gap:12px;" onsubmit="return false;">
+        <input id="custName" type="text" placeholder="Full name" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;" />
+        <input id="custPhone" type="tel" placeholder="Phone number" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;" />
+        <textarea id="custAddress" placeholder="Delivery address" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;min-height:80px;"></textarea>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div>Payment: <strong>Cash on Delivery</strong></div>
+          <button id="placeOrderBtn" class="btn btn-primary">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let selectedSize = '30';
+    let selectedQty = 1;
+    let basePrice = 139;
+
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      if (!nav) return;
+      nav.classList.toggle('active');
+    }
+
+    function toggleCollapsible(header) {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('.collapsible-icon');
+      content.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    function increaseQty() {
+      const input = document.getElementById('qtyInput');
+      input.value = parseInt(input.value) + 1;
+      selectedQty = parseInt(input.value);
+      updateTotalPrice();
+    }
+
+    function decreaseQty() {
+      const input = document.getElementById('qtyInput');
+      if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+        selectedQty = parseInt(input.value);
+        updateTotalPrice();
+      }
+    }
+
+    function updateTotalPrice() {
+      let multiplier = 1;
+      if (selectedSize === '50') multiplier = 1.3;
+      else if (selectedSize === '100') multiplier = 1.8;
+      const pricePerUnit = (basePrice * multiplier).toFixed(0);
+      const totalPrice = (pricePerUnit * selectedQty).toFixed(0);
+      document.getElementById('productPrice').textContent = '$' + totalPrice;
+    }
+
+    // Read product from URL parameters
+    function getProductFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        title: params.get('title') || 'Noir Elegance',
+        price: params.get('price') || '$139',
+        desc: params.get('desc') || 'A sophisticated symphony of sensuality and grace. Noir Elegance captures the essence of timeless beauty, weaving together rare botanicals and precious essences to create an unforgettable olfactory journey.',
+        img: params.get('img') || '/images/image3.jpeg',
+        tags: (params.get('tags') || 'Oriental,Floral').split(','),
+      };
+    }
+
+    // Populate product details
+    const product = getProductFromURL();
+    document.getElementById('productTitle').textContent = product.title;
+    document.getElementById('breadcrumbTitle').textContent = product.title;
+    document.getElementById('productPrice').textContent = product.price;
+    document.getElementById('productDesc').textContent = product.desc;
+    document.getElementById('productImg').src = product.img;
+
+    // Extract base price
+    basePrice = parseFloat(product.price.replace(/[^0-9\.]/g, '')) || 139;
+
+    // Size selection
+    document.querySelectorAll('.size-option').forEach(option => {
+      option.addEventListener('click', function () {
+        document.querySelectorAll('.size-option').forEach(o => o.classList.remove('active'));
+        this.classList.add('active');
+        selectedSize = this.getAttribute('data-size');
+        updateTotalPrice();
+      });
+    });
+
+    // Thumbnail switching
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+      thumb.addEventListener('click', function () {
+        document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById('productImg').src = this.getAttribute('data-src');
+      });
+    });
+
+    // Wishlist functions
+    function getWishlist() {
+      return JSON.parse(localStorage.getItem('wishlist') || '[]');
+    }
+
+    function setWishlist(w) {
+      localStorage.setItem('wishlist', JSON.stringify(w));
+    }
+
+    function isInWishlist(productTitle) {
+      return getWishlist().some(item => item.title === productTitle);
+    }
+
+    function toggleWishlist() {
+      const wishlistBtn = document.querySelector('.btn-icon[title="Wishlist"]');
+      if (isInWishlist(product.title)) {
+        // Remove from wishlist
+        const wishlist = getWishlist();
+        const filtered = wishlist.filter(item => item.title !== product.title);
+        setWishlist(filtered);
+        wishlistBtn.textContent = '♡';
+        wishlistBtn.style.color = 'var(--text)';
+        alert('Removed from wishlist');
+      } else {
+        // Add to wishlist
+        const wishlist = getWishlist();
+        wishlist.push({
+          title: product.title,
+          price: product.price,
+          img: product.img,
+          size: selectedSize,
+        });
+        setWishlist(wishlist);
+        wishlistBtn.textContent = '♥';
+        wishlistBtn.style.color = 'var(--accent)';
+        alert('Added to wishlist');
+      }
+    }
+
+    // Initialize wishlist button
+    const wishlistBtn = document.querySelector('.btn-icon[title="Wishlist"]');
+    wishlistBtn.addEventListener('click', toggleWishlist);
+    if (isInWishlist(product.title)) {
+      wishlistBtn.textContent = '♥';
+      wishlistBtn.style.color = 'var(--accent)';
+    }
+
+    // Share functionality
+    const shareBtn = document.querySelector('.btn-icon[title="Share"]');
+    shareBtn.addEventListener('click', function () {
+      const productUrl = window.location.href;
+      const shareText = `Check out ${product.title} from Beek Perfumes!`;
+      
+      // Try native share if available
+      if (navigator.share) {
+        navigator.share({
+          title: product.title,
+          text: shareText,
+          url: productUrl,
+        }).catch(err => console.log('Share cancelled or failed'));
+      } else {
+        // Fallback: Copy link to clipboard
+        navigator.clipboard.writeText(productUrl).then(() => {
+          alert('Product link copied to clipboard!');
+        }).catch(err => {
+          alert('Share link: ' + productUrl);
+        });
+      }
+    });
+
+    // Update cart count from localStorage
+    function updateCartCount() {
+      try {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const total = cart.reduce((s, i) => s + (i.qty || 0), 0);
+        const headerEl = document.getElementById('cartCountHeader');
+        if (headerEl) headerEl.textContent = total;
+      } catch (e) {
+        // ignore
+      }
+    }
+
+    // Cart functions
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart') || '[]');
+    }
+
+    function setCart(c) {
+      localStorage.setItem('cart', JSON.stringify(c));
+      updateCartCount();
+    }
+
+    // Add to cart
+    document.getElementById('addToCartBtn').addEventListener('click', function () {
+      const cart = getCart();
+      const cartTitle = product.title + ' (' + selectedSize + 'ml)';
+      const existing = cart.find(i => i.title === cartTitle);
+      
+      const sizeMultiplier = selectedSize === '50' ? 1.3 : selectedSize === '100' ? 1.8 : 1;
+      const pricePerUnit = (basePrice * sizeMultiplier).toFixed(0);
+      const finalPrice = '$' + pricePerUnit;
+      
+      if (existing) {
+        existing.qty = (existing.qty || 0) + selectedQty;
+      } else {
+        cart.push({
+          title: cartTitle,
+          price: finalPrice,
+          img: product.img,
+          qty: selectedQty,
+        });
+      }
+      setCart(cart);
+      alert(selectedQty + 'x ' + product.title + ' (' + selectedSize + 'ml) added to cart!');
+      document.getElementById('qtyInput').value = 1;
+      selectedQty = 1;
+      updateTotalPrice();
+    });
+
+    // Header cart button opens cart modal
+    const headerCartBtn = document.getElementById('headerCartBtn');
+    const cartModal = document.getElementById('cartModal');
+    const cartClose = document.getElementById('cartClose');
+    const cartItemsEl = document.getElementById('cartItems');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const checkoutForm = document.getElementById('checkoutForm');
+    const placeOrderBtn = document.getElementById('placeOrderBtn');
+
+    function renderCart() {
+      const cart = getCart();
+      cartItemsEl.innerHTML = '';
+      if (!cart.length) {
+        cartItemsEl.innerHTML = '<div style="padding:20px;color:#6b7280">Your cart is empty.</div>';
+        cartTotalEl.textContent = '0';
+        return;
+      }
+      let total = 0;
+      cart.forEach((it, idx) => {
+        const priceNum = parseFloat((it.price || '').replace(/[^0-9\.]/g, '')) || 0;
+        total += priceNum * (it.qty || 1);
+        const row = document.createElement('div');
+        row.style.display = 'flex';
+        row.style.gap = '12px';
+        row.style.alignItems = 'center';
+        row.style.padding = '8px 0';
+        row.style.borderBottom = '1px solid #f3f4f6';
+        row.innerHTML = `
+          <img src="${it.img}" style="width:72px;height:72px;object-fit:cover;border-radius:8px;" />
+          <div style="flex:1">
+            <div style="font-weight:700">${it.title}</div>
+            <div style="color:#6b7180">${it.price}</div>
+            <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+              <button data-idx="${idx}" class="qty-decrease" style="padding:6px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;">-</button>
+              <span class="qty" data-idx="${idx}">${it.qty}</span>
+              <button data-idx="${idx}" class="qty-increase" style="padding:6px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;">+</button>
+              <button data-idx="${idx}" class="remove-item" style="margin-left:12px;padding:6px;border-radius:6px;border:1px solid #fca5a5;background:#fff;color:#b91c1c;cursor:pointer;">Remove</button>
+            </div>
+          </div>
+        `;
+        cartItemsEl.appendChild(row);
+      });
+      cartTotalEl.textContent = total.toFixed(2);
+
+      cartItemsEl.querySelectorAll('.qty-decrease').forEach(b => b.addEventListener('click', function () {
+        const i = parseInt(this.getAttribute('data-idx'));
+        changeQty(i, -1);
+      }));
+      cartItemsEl.querySelectorAll('.qty-increase').forEach(b => b.addEventListener('click', function () {
+        const i = parseInt(this.getAttribute('data-idx'));
+        changeQty(i, 1);
+      }));
+      cartItemsEl.querySelectorAll('.remove-item').forEach(b => b.addEventListener('click', function () {
+        const i = parseInt(this.getAttribute('data-idx'));
+        removeItem(i);
+      }));
+    }
+
+    function changeQty(index, delta) {
+      const cart = getCart();
+      if (!cart[index]) return;
+      cart[index].qty = Math.max(1, (cart[index].qty || 1) + delta);
+      setCart(cart);
+      renderCart();
+    }
+
+    function removeItem(index) {
+      const cart = getCart();
+      cart.splice(index, 1);
+      setCart(cart);
+      renderCart();
+    }
+
+    if (headerCartBtn) {
+      headerCartBtn.addEventListener('click', function () {
+        renderCart();
+        cartModal.style.display = 'flex';
+      });
+    }
+
+    cartClose.addEventListener('click', function () {
+      cartModal.style.display = 'none';
+      checkoutForm.style.display = 'none';
+      checkoutBtn.style.display = 'inline-block';
+    });
+
+    checkoutBtn.addEventListener('click', function () {
+      const cart = getCart();
+      if (!cart.length) return alert('Cart is empty');
+      checkoutForm.style.display = 'flex';
+      checkoutBtn.style.display = 'none';
+    });
+
+    placeOrderBtn.addEventListener('click', function () {
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+      if (!name || !phone || !address) return alert('Please fill name, phone and address');
+      const cart = getCart();
+      if (!cart.length) return alert('Cart is empty');
+      const order = {
+        id: 'ORD' + Date.now(),
+        createdAt: new Date().toISOString(),
+        customer: { name, phone, address },
+        payment: 'Cash on Delivery',
+        items: cart,
+      };
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      orders.push(order);
+      localStorage.setItem('orders', JSON.stringify(orders));
+      setCart([]);
+      renderCart();
+      checkoutForm.style.display = 'none';
+      cartModal.style.display = 'none';
+      checkoutBtn.style.display = 'inline-block';
+      alert('Order placed! Order ID: ' + order.id + '\nPayment: Cash on Delivery');
+      document.getElementById('custName').value = '';
+      document.getElementById('custPhone').value = '';
+      document.getElementById('custAddress').value = '';
+    });
+
+    // Init
+    updateCartCount();
+  </script>
+</body>
+</html>

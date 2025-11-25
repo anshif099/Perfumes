@@ -102,7 +102,7 @@ const Testimonials = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
                       className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8"
-                      style={{ textShadow: "0 8px 24px rgba(0,0,0,0.5)" }}
+                      style={{ textShadow: "0 8px 24px rgba(0,0,0,0.5)", fontFamily: "'Playfair Display', serif" }}
                     >
                       "{testimonials[currentSlide].quote}"
                     </motion.blockquote>
@@ -112,6 +112,7 @@ const Testimonials = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.7 }}
+                      style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       <p className="text-lg md:text-xl font-bold text-white tracking-wider mb-2">
                         {testimonials[currentSlide].author}
