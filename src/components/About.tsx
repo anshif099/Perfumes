@@ -23,9 +23,9 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="bg-cream p-8 md:p-16 rounded-sm text-center order-2 lg:order-1"
           >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6">
-              Born from a passion for{" "}
-              <span className="text-gold">Scent and Elegance.</span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl leading-tight text-foreground mb-6">
+              <span className="block text-black font-bold">Born from a passion for</span>
+              <span className="block text-gold font-normal">Scent and Elegance.</span>
             </h2>
 
             <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-10 max-w-3xl mx-auto">

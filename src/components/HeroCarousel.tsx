@@ -8,21 +8,21 @@ import hero3 from "@/assets/hero3.jpg";
 const slides = [
   {
     image: hero1,
-    title: "A Fragrance Made\nTo Leave A Mark.",
+    title: "A Fragrance\nMade To Mark",
     description: "Its balanced composition enhances your individuality.",
     textColor: "text-white",
     position: "right",
   },
   {
     image: hero2,
-    title: "A Scent That Lingers\nWith Elegance.",
+    title: "A Scent That\nLingers Elegantly",
     description: "For those who love the art of fine perfume.",
     textColor: "text-black",
     position: "left",
   },
   {
     image: hero3,
-    title: "Where Elegance\nBreathes in Every Note",
+    title: "Elegance Breathes\nIn Every Note",
     description: "A scent as unique as you.",
     textColor: "text-white",
     position: "left",
@@ -72,7 +72,7 @@ const HeroCarousel = () => {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className={`text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 whitespace-pre-line ${slides[currentSlide].textColor} drop-shadow-2xl`}
+              className={`text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 whitespace-pre-line ${slides[currentSlide].textColor} drop-shadow-2xl`}
                 style={{ textShadow: "0 6px 16px rgba(0,0,0,0.45)", fontFamily: "'Playfair Display', serif" }}
               >
                 {slides[currentSlide].title}
