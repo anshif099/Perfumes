@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="images/image1.png">
+  <title>Beek Perfumes — Collections</title>
+  </head>
+<style>
+  /* --- 1. RESET + VARIABLES --- */
+  :root {
+    --accent: #d9a93b;
+    --accent-dark: #c8892f;
+    --muted: #6b7180;
+    --text: #111827;
+    --bg: #fff;
+    --card-shadow: 0 10px 30px rgba(22, 28, 36, 0.06);
+    --radius: 14px;
+    --max-width: 1200px;
+    --container-padding: 24px;
+    --header-height: 76px;
+    font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial;
+  }
+
+  * { box-sizing: border-box; }
+  
+  html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+  body { 
+    background: var(--bg); 
+    color: var(--text); 
+    -webkit-font-smoothing: antialiased; 
+    padding-top: var(--header-height); /* Prevent content from hiding behind fixed header */
+  }
+
+  /* --- 2. LAYOUT UTILITIES --- */
+  .container {
+    width: var(--max-width);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  /* --- 3. HEADER & NAV --- */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85); /* Slightly more opaque for readability */
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    height: var(--header-height);
+    transition: all 0.3s ease;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  /* Brand */
+  .brand { display: flex; align-items: center; gap: 12px; z-index: 1001; }
+  .logo { height: 40px; width: auto; } /* Ensure aspect ratio */
+  .brand-text { font-weight: 700; color: #111; letter-spacing: 0.2px; font-size: 18px; }
+
+  /* Desktop Nav */
+  .main-nav { display: block; }
+  .main-nav ul {
+    display: flex; list-style: none; gap: 32px; margin: 0; padding: 0; align-items: center;
+  }
+  .main-nav a {
+    color: #111; text-decoration: none; font-weight: 500; font-size: 15px; padding: 8px; transition: color 0.2s;
+  }
+  .main-nav a:hover, .main-nav li.active a { color: var(--accent-dark); font-weight: 700; }
+
+  /* Icons */
+  .header-icons { display: flex; align-items: center; gap: 8px; z-index: 1001; }
+  .icon-btn {
+    background: transparent; border: 0; padding: 8px; border-radius: 50%; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s;
+  }
+  .icon-btn:hover { background: rgba(0,0,0,0.05); }
+  .icon-btn svg { stroke: #111; } /* Dark icons for light header */
+
+  /* Mobile Menu Button (Hidden on Desktop) */
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1002; }
+  .menu-toggle svg { stroke: #111; width: 24px; height: 24px; }
+
+  /* --- 4. HERO SECTION --- */
+  .hero {
+    min-height: 80vh; /* Viewport height based */
+    margin-top: calc(var(--header-height) * -1); /* Pull up behind header */
+    padding-top: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    background-image: url('/images/image2.jpg'); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0; 
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1;
+  }
+  .hero-inner { position: relative; z-index: 2; width: 100%; }
+  .hero-left { max-width: 600px; }
+
+  .badge {
+    display: inline-block; border: 1px solid rgba(255, 255, 255, 0.4); 
+    padding: 8px 16px; border-radius: 50px; color: #fff; font-size: 13px; font-weight: 600;
+    background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(4px);
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    margin: 0 0 16px; font-family: Georgia, serif; font-size: clamp(40px, 8vw, 72px); 
+    line-height: 1.1; letter-spacing: -1px; color: #fff;
+  }
+  .hero-sub {
+    color: rgba(255, 255, 255, 0.9); font-size: clamp(16px, 2vw, 18px); 
+    line-height: 1.6; max-width: 90%; margin-bottom: 32px;
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
+  
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; 
+    font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: var(--accent); color: #fff; border: none; }
+  .btn-primary:hover { background: var(--accent-dark); box-shadow: 0 4px 12px rgba(217, 169, 59, 0.4); }
+  .btn-outline { background: transparent; border: 2px solid rgba(255, 255, 255, 0.3); color: #fff; }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+  /* --- 5. MAIN CONTENT --- */
+  .main-content { padding: 60px 0; }
+
+  /* Filters */
+  .filter-row {
+    display: flex; justify-content: space-between; align-items: center; 
+    margin-bottom: 30px; flex-wrap: wrap; gap: 20px;
+  }
+  .filter-left { 
+    display: flex; align-items: center; gap: 16px; width: 100%; overflow: hidden;
+  }
+  .filter-label { color: var(--muted); white-space: nowrap; }
+  
+  /* Scrollable Tabs for Mobile */
+  .tabs {
+    display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+    scrollbar-width: none; /* Firefox hide scrollbar */
+  }
+  .tabs::-webkit-scrollbar { display: none; } /* Chrome hide scrollbar */
+
+  .tab {
+    padding: 10px 20px; border-radius: 50px; border: 1px solid #e5e7eb; 
+    background: #fff; color: var(--muted); cursor: pointer; font-weight: 600; 
+    white-space: nowrap; transition: all 0.2s; font-size: 14px;
+  }
+  .tab.active, .tab:hover {
+    background: var(--text); color: #fff; border-color: var(--text);
+  }
+
+  .filter-right { color: var(--muted); font-size: 14px; margin-left: auto; }
+
+  /* Products Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  .product-card {
+    background: #fff; border-radius: var(--radius); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .product-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow); }
+
+  .photo {
+    height: 0; padding-bottom: 120%; /* Aspect ratio container */
+    border-radius: 12px; overflow: hidden; position: relative; background: #f3f4f6;
+  }
+  .photo img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    object-fit: cover; display: block; transition: transform 0.5s;
+  }
+  .product-card:hover .photo img { transform: scale(1.05); }
+
+  .ribbon {
+    position: absolute; left: 12px; top: 12px; 
+    background: #fff; color: #111; padding: 6px 12px; 
+    border-radius: 4px; font-weight: 700; font-size: 11px; text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .product-body { padding: 16px 4px; }
+  .product-tags { margin-bottom: 8px; }
+  .tag { 
+    display: inline-block; background: #f3f4f6; padding: 4px 8px; 
+    border-radius: 4px; color: #666; font-weight: 600; font-size: 11px; margin-right: 6px; 
+  }
+  .product-title { font-family: Georgia, serif; font-size: 20px; margin: 8px 0; color: #111; }
+  .product-desc { 
+    color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 16px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .product-meta { display: flex; align-items: center; justify-content: space-between; }
+  .price { color: var(--text); font-weight: 700; font-size: 18px; }
+  .view-details { 
+    text-decoration: none; color: var(--accent-dark); font-weight: 600; font-size: 14px; 
+    display: flex; align-items: center; gap: 4px;
+  }
+  .view-details:hover { text-decoration: underline; }
+
+  /* --- 6. NEWSLETTER --- */
+  .newsletter {
+    padding: 80px 0; background: #0f0f01; margin-top: 40px;
+  }
+  .newsletter-inner { display: flex; align-items: stretch; gap: 0; background: #ddc213; border-radius: 16px; overflow: hidden; box-shadow: var(--card-shadow); }
+  .nl-left { flex: 1; min-height: 300px; }
+  .nl-left img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  
+  .nl-panel {
+    flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .nl-panel h2 { font-family: Georgia, serif; font-size: 32px; margin: 0 0 12px; }
+  .nl-sub { margin: 0 0 24px; color: var(--muted); line-height: 1.6; }
+  
+  .nl-form { display: flex; gap: 10px; width: 100%; }
+  .nl-form input {
+    flex: 1; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; outline: none; transition: border 0.2s;
+  }
+  .nl-form input:focus { border-color: var(--accent); }
+  .btn-sub {
+    background: #111; color: #fff; padding: 12px 24px; border-radius: 8px; 
+    border: 0; font-weight: 700; cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-sub:hover { opacity: 0.9; }
+  .nl-note { font-size: 12px; color: #9ca3af; margin-top: 16px; }
+
+  /* --- 7. FOOTER --- */
+  .site-footer {
+    background: #111; color: #d1d5db; padding: 60px 0 30px; margin-top: 0;
+  }
+  .footer-inner { display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
+  .footer-col { flex: 1; min-width: 200px; }
+  .footer-logo { height: 40px; margin-bottom: 20px; } /* Make placeholder logo white */
+  
+  .footer-address { line-height: 1.8; font-size: 14px; }
+  .footer-phone { display: block; margin-top: 8px; color: #fff; font-weight: 600; }
+  
+  .footer-col h4 { 
+    font-family: Georgia, serif; color: #fff; margin-bottom: 20px; font-size: 18px; margin-top: 0;
+  }
+  .footer-col a { 
+    display: block; color: #9ca3af; margin: 10px 0; text-decoration: none; transition: color 0.2s; 
+  }
+  .footer-col a:hover { color: #fff; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; margin-top: 40px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    color: #6b7280; font-size: 13px;
+  }
+  .legal-links { display: flex; gap: 20px; }
+  .legal-links a { color: #6b7280; text-decoration: none; }
+
+  /* --- 8. RESPONSIVE BREAKPOINTS --- */
+  
+  /* Tablet (Landscape) & Small Laptops */
+  @media (max-width: 1024px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .hero-title { font-size: 56px; }
+    .nl-panel { padding: 40px; }
+  }
+
+  /* Tablet (Portrait) */
+  @media (max-width: 900px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .newsletter-inner { flex-direction: column; }
+    .nl-left { min-height: 200px; max-height: 250px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    :root { --container-padding: 20px; }
+    
+    /* Nav */
+    .menu-toggle { display: block; }
+    .main-nav {
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: #fff; border-top: 1px solid #eee;
+      padding: 20px; 
+      transform: translateY(-150%); opacity: 0; transition: all 0.3s ease;
+      z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .main-nav.active { transform: translateY(0); opacity: 1; }
+    .main-nav ul { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .main-nav a { display: block; width: 100%; font-size: 18px; padding: 10px 0; border-bottom: 1px solid #f9fafb; }
+
+    /* Layout adjustments */
+    .filter-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .filter-left { width: 100%; }
+    .filter-right { display: none; } /* Hide count on small mobile */
+
+    .footer-inner { flex-direction: column; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+    .legal-links { justify-content: center; }
+  }
+
+  /* Small Mobile */
+  @media (max-width: 480px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; width: 100%; }
+    .btn { width: 100%; }
+    .nl-form { flex-direction: column; }
+    .nl-form button { width: 100%; }
+  }
+
+</style>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      
+      <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+<div class="brand">
+  <img src="src/assets/logo.png" alt="Beek Perfumes logo" class="logo" />
+  <span class="brand-text">BEEK</span>
+</div>
+
+<nav class="main-nav" id="mainNav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="#">Collections</a></li>
+    <li><a href="/ourstory.html">Our Story</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+      <div class="header-icons">
+        <button class="icon-btn" aria-label="profile">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <button class="icon-btn" aria-label="search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn" aria-label="cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6h15l-1.5 9h-12z"></path>
+            <circle cx="9" cy="20" r="1"></circle>
+            <circle cx="18" cy="20" r="1"></circle>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <div class="badge">Luxury Fragrances</div>
+        <h1 class="hero-title">Timeless Scents, <br>Capturing Moments</h1>
+        <p class="hero-sub">Discover our curated selection of luxury fragrances, each meticulously crafted to capture moments of elegance and emotion. From fresh florals to deep orientals.</p>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#">Explore Collection</a>
+          <a class="btn btn-outline" href="#">View Best Sellers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container main-content">
+    
+    <div class="filter-row">
+      <div class="filter-left">
+        <span class="filter-label">Filter by scent:</span>
+        <div class="tabs">
+          <button class="tab active">All</button>
+          <button class="tab">Floral</button>
+          <button class="tab">Oriental</button>
+          <button class="tab">Woody</button>
+          <button class="tab">Fresh</button>
+          <button class="tab">Citrus</button>
+        </div>
+      </div>
+      <div class="filter-right">Showing 12 fragrances</div>
+    </div>
+
+    <section class="products-grid" aria-label="perfume products">
+      
+      <article class="product-card">
+        <div class="photo">
+          <img src="/images/image3.jpeg" alt="Noir Elegance" loading="lazy" />
+          <span class="ribbon">Best Seller</span>
+        </div>
+        <div class="product-body">
+          <div class="product-tags">
+            <span class="tag">Oriental</span>
+            <span class="tag">Floral</span>
+          </div>
+          <h3 class="product-title">Noir Elegance</h3>
+          <p class="product-desc">A sophisticated symphony of jasmine, amber, and vanilla that whispers timeless elegance.</p>
+          <div class="product-meta">
+            <div class="price">$139</div>
+            <a class="view-details" href="#">Details &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="photo">
+          <img src="/images/image4.jpeg" alt="Azure Dream" loading="lazy" />
+          <span class="ribbon" style="background: #2563eb; color:white;">New</span>
+        </div>
+        <div class="product-body">
+          <div class="product-tags">
+            <span class="tag">Fresh</span>
+            <span class="tag">Citrus</span>
+          </div>
+          <h3 class="product-title">Azure Dream</h3>
+          <p class="product-desc">Fresh bergamot and sea salt merge with aquatic notes for an invigorating day scent.</p>
+          <div class="product-meta">
+            <div class="price">$125</div>
+            <a class="view-details" href="#">Details &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="photo">
+          <img src="/images/image5.jpeg" alt="Velvet Rose" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <div class="product-tags">
+            <span class="tag">Floral</span>
+            <span class="tag">Woody</span>
+          </div>
+          <h3 class="product-title">Velvet Rose</h3>
+          <p class="product-desc">Romantic petals of Bulgarian rose dance with hints of patchouli and musk.</p>
+          <div class="product-meta">
+            <div class="price">$149</div>
+            <a class="view-details" href="#">Details &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="photo">
+          <img src="/images/image6.jpeg" alt="Oud Mystique" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <div class="product-tags">
+            <span class="tag">Woody</span>
+            <span class="tag">Oriental</span>
+          </div>
+          <h3 class="product-title">Oud Mystique</h3>
+          <p class="product-desc">Deep oud wood mingles with saffron and leather for an enigmatic presence.</p>
+          <div class="product-meta">
+            <div class="price">$189</div>
+            <a class="view-details" href="#">Details &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="photo"><img src="/images/image7.jpeg" alt="Citrus Bloom" loading="lazy" /></div>
+        <div class="product-body">
+          <div class="product-tags"><span class="tag">Citrus</span></div>
+          <h3 class="product-title">Citrus Bloom</h3>
+          <p class="product-desc">Vibrant mandarin and neroli blossom into a sun-kissed garden of joy.</p>
+          <div class="product-meta"><div class="price">$115</div><a class="view-details" href="#">Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="photo"><img src="/images/image8.jpeg" alt="Sandalwood Serenity" loading="lazy" /></div>
+        <div class="product-body">
+          <div class="product-tags"><span class="tag">Woody</span></div>
+          <h3 class="product-title">Sandalwood Serenity</h3>
+          <p class="product-desc">Creamy sandalwood embraces warm cedar and vanilla for peaceful meditation.</p>
+          <div class="product-meta"><div class="price">$155</div><a class="view-details" href="#">Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="photo"><img src="/images/image9.jpeg" alt="Midnight Jasmine" loading="lazy" /></div>
+        <div class="product-body">
+          <div class="product-tags"><span class="tag">Floral</span></div>
+          <h3 class="product-title">Midnight Jasmine</h3>
+          <p class="product-desc">Intoxicating night-blooming jasmine wrapped in dark chocolate and tonka bean.</p>
+          <div class="product-meta"><div class="price">$145</div><a class="view-details" href="#">Details &rarr;</a></div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="photo"><img src="/images/image10.jpeg" alt="Ocean Breeze" loading="lazy" /></div>
+        <div class="product-body">
+          <div class="product-tags"><span class="tag">Fresh</span></div>
+          <h3 class="product-title">Ocean Breeze</h3>
+          <p class="product-desc">Crisp marine accord with driftwood and white musk evokes coastal tranquility.</p>
+          <div class="product-meta"><div class="price">$129</div><a class="view-details" href="#">Details &rarr;</a></div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="nl-left">
+          <img src="/images/image11.jpeg" alt="newsletter bottle" loading="lazy" />
+        </div>
+        <div class="nl-panel">
+          <h2>Subscribe to our Newsletter</h2>
+          <p class="nl-sub">Get the latest news about perfume tips, new products, and exclusive offers directly to your inbox.</p>
+          <form class="nl-form" action="#" onsubmit="return false;">
+            <input type="email" placeholder="Enter your email" aria-label="email" required />
+            <button class="btn-sub" type="submit">SUBSCRIBE</button>
+          </form>
+          <p class="nl-note">No spam, only quality scents. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col" style="flex: 2;">
+          <img src="src/assets/logo.png" alt="logo" class="footer-logo" />
+          <div class="footer-address">
+            BK Tower, Oud Metha, Dubai,<br/>United Arab Emirates<br/>
+            <span class="footer-phone">+971 (0) 55 114 1144</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="/">Home</a>
+          <a href="/shop.html">Collections</a>
+          <a href="/ourstory.html">Our Story</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <a href="#">Shipping Policy</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2025 Beek Perfumes. All rights reserved</div>
+        <div class="legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
