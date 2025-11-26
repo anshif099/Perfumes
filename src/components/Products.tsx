@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/button";
 import product1 from "@/assets/product1.jpg";
 import product2 from "@/assets/product2.jpg";
 import product3 from "@/assets/product3.jpg";
+import product4 from "@/assets/product4.jpg";
+import product5 from "@/assets/product5.jpg";
+import product6 from "@/assets/product6.jpg";
 
 const products = [
   {
@@ -40,7 +43,7 @@ const products = [
     },
   },
   {
-    image: product1,
+    image: product4,
     title: "Midnight Aura",
     notes: {
       top: "Blackcurrant, Bergamot",
@@ -49,7 +52,7 @@ const products = [
     },
   },
   {
-    image: product2,
+    image: product5,
     title: "Royal Ember",
     notes: {
       top: "Cardamom, Grapefruit",
@@ -58,7 +61,7 @@ const products = [
     },
   },
   {
-    image: product3,
+    image: product6,
     title: "Golden Veil",
     notes: {
       top: "Lemon Zest, Neroli",
@@ -177,10 +180,10 @@ const ProductCard = ({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-[260px] md:w-[320px] lg:w-[360px] flex-shrink-0 bg-white"
+      className="relative w-[260px] md:w-[320px] lg:w-[450px] flex-shrink-0 bg-white"
     >
       {/* IMAGE AREA (slightly reduced height) */}
-      <div className="relative h-[460px] md:h-[680px] overflow-hidden">
+      <div className="relative h-[460px] md:h-[550px] overflow-hidden">
         <div
           className="w-full h-full bg-cover bg-center"
           style={{ backgroundImage: `url(${product.image})` }}

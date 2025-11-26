@@ -11,7 +11,7 @@ const Packaging = () => {
   return (
     <section
       ref={ref}
-      className="w-full bg-cream py-12 md:py-20 flex justify-center"
+      className="w-full bg-[#feefdc] py-12 md:py-20 flex justify-center"
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center max-w-7xl mx-auto">
@@ -45,8 +45,8 @@ const Packaging = () => {
             initial={{ opacity: 0, x: 50, rotate: 0 }}
             animate={
               isInView
-                ? { opacity: 1, x: 0, rotate: -10 }
-                : { opacity: 0, x: 50, rotate: 0 }
+                ? { opacity: 1, x: 0 }
+                : { opacity: 0, x: 50 }
             }
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center items-center"
@@ -54,7 +54,7 @@ const Packaging = () => {
             <img
               src={packagingImage}
               alt="Perfume Packaging"
-              className="w-full max-w-md h-auto object-contain shadow-2xl"
+              className="w-full max-w-md h-[500px] object-cover"
             />
           </motion.div>
         </div>

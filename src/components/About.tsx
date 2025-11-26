@@ -24,18 +24,18 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="bg-cream w-full h-full flex flex-col justify-center p-8 md:p-12 lg:p-16 rounded-sm text-center lg:text-left overflow-hidden order-2 lg:order-1"
           >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl leading-tight text-foreground mb-6 max-w-2xl mx-auto lg:mx-0">
+            <h2 className="text-3xl md:text-5xl lg:text-5xl leading-tight text-foreground mb-6 max-w-2xl mx-auto lg:mx-0 block text-black font-semi-bold text-center">
               {/* line 1 – black */}
-              <span className="block text-black font-bold">
-                Born from a passion for
-              </span>
+              {/* <span className="block text-black font-bold"> */}
+                Born from a passion for <br></br>
+              {/* </span> */}
               {/* line 2 – gold */}
-              <span className="block text-gold font-normal">
-                Scent and Elegance.
+              <span className="text-gold">
+                Scent</span> and <span className="text-gold">Elegance.
               </span>
             </h2>
 
-            <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0 text-center">
               At Beek Perfumes UAE, we believe fragrance is a quiet form of art
               — a way to express elegance without excess. Each scent is crafted
               with thoughtful refinement, blending timeless botanicals with
@@ -46,7 +46,7 @@ const About = () => {
 
             <a
               href="/ourstory.html"
-              className="inline-block px-12 py-3 bg-gold hover:bg-gold-dark text-white font-semibold rounded transition-colors"
+              className=" px-12 py-3 bg-gold hover:bg-gold-dark text-white font-semibold transition-colors text-center max-w-7xl mx-auto text-lg"
             >
               Know More
             </a>
