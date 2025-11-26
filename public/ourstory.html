@@ -41,9 +41,18 @@
     .main-nav ul{display:flex;gap:28px;list-style:none;align-items:center;margin:0;padding:0}
     .main-nav a{color:#111;text-decoration:none;font-weight:500;font-size:15px;padding:8px;transition:color 0.2s}
     .main-nav a:hover, .main-nav li.active a{color:var(--accent-dark);font-weight:700}
-    .menu-toggle{display:none}
+
+    /* style for the menu toggle (hamburger) */
+    .menu-toggle {
+      display:none; /* default hidden on larger screens */
+      background:none;border:0;cursor:pointer;padding:8px;
+      z-index:1100; /* make sure it's above other header items on mobile */
+      -webkit-tap-highlight-color: transparent;
+    }
+    .menu-toggle:focus { outline: none; }
+    .menu-toggle svg { display:block; width:28px; height:28px; stroke:#000; }
+
     .header-icons{display:flex;gap:8px;align-items:center;z-index:1001}
-    .menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px}
     .icon-btn {
       background: transparent;
       border: 0;
@@ -68,6 +77,7 @@
       aspect-ratio: 1 / 1;   /* Perfect square */
       align-items: stretch;
       overflow: hidden;
+      position: relative;
     }
 
     /* top-left: story large heading CENTERED */
@@ -116,27 +126,52 @@
     .legal-links { display: flex; gap: 20px; }
     .legal-links a { color: #6b7280; text-decoration: none; }
 
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 1024px){ .story-hero { padding: 48px; } .about { padding: 48px; } .story-hero h1 { font-size:72px; } .about h2 { font-size:32px; } }
-    @media (max-width: 900px){ .grid-hero { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; aspect-ratio: auto; } }
-    @media (max-width: 768px){
-      .grid-hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; aspect-ratio: auto; }
-      .story-hero, .img-topright, .img-bottomleft, .about { min-height: 50vh; }
-      .grid-hero::before, .grid-hero::after, .grid-hero .h-divider { display:none; }
-      .story-hero h1 { font-size:36px; }
-      .about h2 { font-size:28px; text-align:center; }
-      .story-hero { justify-content:center; align-items:center; padding:40px 24px; }
-      .about { padding:40px 24px; justify-content:center; align-items:center; }
-      .img-topright img, .img-bottomleft img { height:100%; object-position:center; }
-      .menu-toggle { display: block; }
-      .main-nav { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-top: 1px solid #eee; padding: 20px; transform: translateY(-150%); opacity: 0; transition: all 0.3s ease; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-      .main-nav.active { transform: translateY(0); opacity: 1; }
-      .main-nav ul { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .main-nav a { display: block; width: 100%; font-size: 18px; padding: 10px 0; border-bottom: 1px solid #f9fafb; }
-      .footer-inner { flex-direction: column; gap: 32px; }
-      .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
-      .legal-links { justify-content: center; }
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1024px){ .story-hero { padding: 48px; } .about { padding: 48px; } .story-hero h1 { font-size:72px; } .about h2 { font-size:32px; } }
+  @media (max-width: 900px){ .grid-hero { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; aspect-ratio: auto; } }
+
+  /* MOBILE */
+  @media (max-width: 768px){
+    .grid-hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; aspect-ratio: auto; }
+    .story-hero, .img-topright, .img-bottomleft, .about { min-height: 50vh; }
+    .grid-hero::before, .grid-hero::after, .grid-hero .h-divider { display:none; }
+    .story-hero h1 { font-size:36px; }
+    .about h2 { font-size:28px; text-align:center; }
+    .story-hero { justify-content:center; align-items:center; padding:40px 24px; }
+    .about { padding:40px 24px; justify-content:center; align-items:center; }
+    .img-topright img, .img-bottomleft img { height:100%; object-position:center; }
+
+    /* show the toggle on mobile */
+    .menu-toggle { display: block; }
+
+    /* mobile nav: absolute panel that slides down */
+    .main-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid #eee;
+      padding: 20px;
+      transform: translateY(-150%);
+      opacity: 0;
+      transition: all 0.28s cubic-bezier(.2,.9,.3,1);
+      z-index: 999;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      pointer-events: none;
     }
+    .main-nav.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .main-nav ul { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .main-nav a { display: block; width: 100%; font-size: 18px; padding: 10px 0; border-bottom: 1px solid #f9fafb; }
+
+    .footer-inner { flex-direction: column; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+    .legal-links { justify-content: center; }
+  }
 
     /* small touch-ups so images exactly meet pixel-perfect */
     html,body { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
@@ -336,8 +371,9 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()" id="menuToggle">
+        <!-- Hamburger SVG (three black lines) -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -346,10 +382,9 @@
 
       <div class="brand">
         <img src="images/image1.png" alt="Beek Perfumes logo" class="logo" />
-        <span class="brand-text">BEEK</span>
       </div>
 
-      <nav class="main-nav" id="mainNav">
+      <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/shop.html">Collections</a></li>
@@ -537,10 +572,22 @@
   <script>
     function toggleMenu() {
       const nav = document.getElementById('mainNav');
-      if(!nav) return;
+      if (!nav) return;
       nav.classList.toggle('active');
-      nav.style.display = nav.style.display === 'block' ? '' : 'block';
     }
+
+    // Close nav if clicking outside (on mobile)
+    document.addEventListener('click', function (e) {
+      const nav = document.getElementById('mainNav');
+      const toggle = document.getElementById('menuToggle');
+      if (!nav || !toggle) return;
+      const isClickInsideNav = nav.contains(e.target);
+      const isClickToggle = toggle.contains(e.target);
+      if (!isClickInsideNav && !isClickToggle && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+      }
+    });
+
     // Update header cart count from localStorage (if cart used on shop page)
     document.addEventListener('DOMContentLoaded', function () {
       try {
