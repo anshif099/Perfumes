@@ -25,44 +25,58 @@ const services = [
 ];
 
 const Services = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
 
   return (
-    <section className="w-full bg-black py-12 md:py-20 flex justify-center">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="bg-white p-8 md:p-16 rounded-sm shadow-2xl max-w-7xl mx-auto -mt-20 h-[350px]"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                ref={ref}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="text-center"
-              >
-                <div className="w-28 h-28 md:w-32 md:h-32 rounded-full border-2 border-gray-300 flex items-center justify-center mx-auto mb-6">
-                  <service.icon className="w-12 h-12 md:w-14 md:h-14 text-foreground" />
-                </div>
+    <section className="w-full bg-black py-10 md:py-20 flex justify-center px-4">
+      <motion.div
+        ref={containerRef}
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8 }}
+        className="
+          bg-white 
+          w-full 
+          max-w-6xl 
+          mx-auto 
+          rounded-sm 
+          shadow-2xl 
+          px-5 
+          py-7 
+          sm:px-8 
+          sm:py-10 
+          md:px-12 
+          md:py-12 
+          -mt-12 
+          sm:-mt-16 
+          md:-mt-20
+        "
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="flex flex-col items-center text-center"
+            >
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full border border-gray-300 flex items-center justify-center mb-4 sm:mb-6">
+                <service.icon className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 text-foreground" />
+              </div>
 
-                <h3 className="text-xl md:text-2xl font-semibold mb-4 text-foreground">
-                  {service.title}
-                </h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-foreground">
+                {service.title}
+              </h3>
 
-                <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
-                  {service.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+              <p className="text-xs sm:text-sm md:text-base text-foreground/70 leading-relaxed max-w-xs">
+                {service.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 };
