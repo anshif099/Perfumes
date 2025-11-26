@@ -2,51 +2,37 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer id="footer" className="w-full bg-dark-overlay text-white/90">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-8">
-          {/* Brand & Contact */}
-          <div>
-            <div className="flex items-start gap-4 mb-6">
-              <img src={logo} alt="BEEK Perfumes" className="w-11 h-auto" />
-              <div>
-                <h4 className="font-bold text-lg mb-2">Beek Perfumes</h4>
-                <p className="text-sm text-white/75 leading-relaxed">
-                  BK Tower, Oud Metha, Dubai,
-                  <br />
-                  United Arab Emirates
-                  <br />
-                  <span className="block mt-2">+971 (0) 55 114 1144</span>
-                </p>
-              </div>
-            </div>
-          </div>
-
+    <footer id="footer" className="w-full bg-black text-white/80">
+      <div className="max-w-7xl mx-auto px-4 pt-10 pb-6">
+        {/* Top link columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 pb-10">
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <nav className="flex flex-col gap-3">
+            <h4 className="text-sm font-semibold mb-4 tracking-wide">
+              Quick Links
+            </h4>
+            <nav className="flex flex-col gap-2 text-xs md:text-sm">
               <a
                 href="#"
-                className="text-sm text-white/75 hover:text-gold transition-colors"
+                className="text-white/70 hover:text-gold transition-colors"
               >
                 Home
               </a>
               <a
                 href="#products"
-                className="text-sm text-white/75 hover:text-gold transition-colors"
+                className="text-white/70 hover:text-gold transition-colors"
               >
                 Collections
               </a>
               <a
                 href="#about"
-                className="text-sm text-white/75 hover:text-gold transition-colors"
+                className="text-white/70 hover:text-gold transition-colors"
               >
                 Our Story
               </a>
               <a
                 href="#footer"
-                className="text-sm text-white/75 hover:text-gold transition-colors"
+                className="text-white/70 hover:text-gold transition-colors"
               >
                 Contact
               </a>
@@ -55,33 +41,51 @@ const Footer = () => {
 
           {/* Follow Us */}
           <div>
-            <h4 className="font-semibold mb-4">Follow Us</h4>
-            <nav className="flex flex-col gap-3">
+            <h4 className="text-sm font-semibold mb-4 tracking-wide">
+              Follow Us
+            </h4>
+            <nav className="flex flex-col gap-2 text-xs md:text-sm">
               <a
                 href="#"
-                className="text-sm text-white/75 hover:text-gold transition-colors"
+                className="text-white/70 hover:text-gold transition-colors"
               >
                 Instagram
               </a>
               <a
                 href="#"
-                className="text-sm text-white/75 hover:text-gold transition-colors"
+                className="text-white/70 hover:text-gold transition-colors"
               >
                 Facebook
               </a>
             </nav>
           </div>
+
+          <div className="hidden md:block" />
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-          <p>© 2025 beekperfumes. All rights reserved</p>
+        {/* Brand + Address */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+          <div className="flex items-center gap-3">
+            <div className="bg-gold p-2">
+              <img src={logo} alt="BEEK Perfumes" className="w-6 h-auto" />
+            </div>
+            <div className="text-[11px] md:text-xs leading-relaxed text-white/70">
+              <p>BK Tower, Oud Metha, Dubai,</p>
+              <p>United Arab Emirates</p>
+              <p className="mt-1">+971 (0) 55 114 1144</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 pt-4 mt-2 text-[11px] md:text-xs text-white/60 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p>Copyright 2025 beekperfumes. All right reserved</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-gold transition-colors">
               Privacy Policy
             </a>
             <a href="#" className="hover:text-gold transition-colors">
-              Terms & Conditions
+              Terms &amp; Conditions
             </a>
             <a href="#" className="hover:text-gold transition-colors">
               Disclaimer

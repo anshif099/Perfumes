@@ -26,7 +26,6 @@ const Header = () => {
         >
           <a href="/" className="flex items-center gap-3">
             <img src={logo} alt="BEEK Perfumes logo" className="h-14 w-auto" />
-            <span className="text-white font-semibold text-xl">BEEK Perfumes</span>
           </a>
         </motion.div>
 
