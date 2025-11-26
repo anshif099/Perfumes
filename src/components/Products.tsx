@@ -126,42 +126,43 @@ const Products = () => {
     isDownRef.current = false;
   };
 
-return (
-  <section id="products" ref={sectionRef} className="w-full bg-white m-0">
+  return (
+    <section id="products" ref={sectionRef} className="w-full bg-white">
 
-    {/* Top white gap */}
-    <div className="h-6 md:h-8 bg-white" />
+      {/* Top white gap */}
+      <div className="h-8 bg-white" />
 
-    {/* Slider */}
-    <div
-      ref={sliderRef}
-      className="w-full overflow-hidden cursor-grab select-none"
-      onMouseDown={handleMouseDown}
-      onMouseLeave={endDrag}
-      onMouseUp={endDrag}
-      onMouseMove={handleMouseMove}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      onWheel={(e) => e.preventDefault()}
-    >
-      <div className="flex">
-        {products.map((product, index) => (
-          <ProductCard
-            key={product.title + index}
-            product={product}
-            index={index}
-            isInView={isInView}
-          />
-        ))}
+      {/* Slider */}
+      <div
+        ref={sliderRef}
+        className="w-full overflow-hidden cursor-grab select-none"
+        onMouseDown={handleMouseDown}
+        onMouseLeave={endDrag}
+        onMouseUp={endDrag}
+        onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onWheel={(e) => e.preventDefault()}
+      >
+        <div className="flex">
+          {products.map((product, index) => (
+            <ProductCard
+              key={product.title + index}
+              product={product}
+              index={index}
+              isInView={isInView}
+            />
+          ))}
+        </div>
       </div>
-    </div>
 
-    {/* ✅ Big bottom white gap (like your screenshot) */}
-    <div className="h-[140px] md:h-[1800px] lg:h-[140px] bg-white" />
-  </section>
-);
+      {/* Bottom white gap */}
+      <div className="h-[140px] bg-white" />
+    </section>
+  );
 };
+
 const ProductCard = ({
   product,
   index,
@@ -180,54 +181,59 @@ const ProductCard = ({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-[260px] md:w-[320px] lg:w-[450px] flex-shrink-0 bg-white"
+      className="relative w-[260px] md:w-[330px] lg:w-[450px] flex-shrink-0 bg-white"
     >
-      {/* IMAGE AREA (slightly reduced height) */}
       <div className="relative h-[460px] md:h-[550px] overflow-hidden">
         <div
           className="w-full h-full bg-cover bg-center"
           style={{ backgroundImage: `url(${product.image})` }}
         />
 
-        {/* Hover frame */}
+        {/* GLASS GOLD PANEL */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute top-[19%] left-1/2 -translate-x-1/2 w-[76%] h-80 border-[16px] border-white/30 rounded-md pointer-events-none"
-        />
+  initial={{ opacity: 0 }}
+  animate={{ opacity: isHovered ? 1 : 0 }}
+  transition={{ duration: 0.25 }}
+  className="
+    absolute
+    top-[18%]
+    left-1/2
+    -translate-x-1/2
+    w-[78%]
+    px-6
+    py-5
+    backdrop-blur-sm
+    bg-[#f3e5cc]/45
+    border border-[#e8cfa2]/60
+    shadow-sm
+  "
+>
+  <h3 className="text-2xl font-medium mb-2 text-black">
+    {product.title}
+  </h3>
 
-        {/* Hover info box */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[72%] p-6 bg-white/90 rounded-sm shadow-2xl"
-        >
-          <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-gray-900">
-            {product.title}
-          </h3>
-          <div className="text-sm md:text-base text-gray-700 leading-relaxed">
-            <p>
-              <strong>Top:</strong> {product.notes.top}
-            </p>
-            <p>
-              <strong>Heart:</strong> {product.notes.heart}
-            </p>
-            <p>
-              <strong>Base:</strong> {product.notes.base}
-            </p>
-          </div>
-        </motion.div>
+  <div className="text-sm text-black leading-relaxed">
+    <p>Top: {product.notes.top}</p>
+    <p className="mt-1">Heart: {product.notes.heart}</p>
+    <p className="mt-1">Base: {product.notes.base}</p>
+  </div>
+</motion.div>
 
-        {/* Bottom gradient + button ON IMAGE */}
+
+        {/* Button */}
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center pb-4">
           <Button
             variant="outline"
-            className="border border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300"
-            onClick={() => {
-              window.location.href = "shop.html";
-            }}
+            className="
+              border border-white 
+              text-white 
+              bg-transparent 
+              hover:bg-white 
+              hover:text-black 
+              transition-all 
+              duration-300
+            "
+            onClick={() => (window.location.href = "shop.html")}
           >
             Shop Now
           </Button>
