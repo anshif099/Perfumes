@@ -8,8 +8,8 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "Collections", href: "#products" },
+    { name: "Home", href: "/" },
+    { name: "Collections", href: "/Shop" },
     { name: "Our Story", href: "#about" },
     { name: "Contact", href: "/contact.html" },
   ];
