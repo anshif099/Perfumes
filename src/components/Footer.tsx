@@ -3,7 +3,7 @@ import logo from "@/assets/logo.png";
 const Footer = () => {
   return (
     <footer id="footer" className="w-full bg-black text-white/80">
-      <div className="max-w-7xl mx-auto px-4 pt-10 pb-6">
+      <div className="max-w-7xl mx-auto px-4 pt-10 pb-10">
         {/* Top link columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 pb-10">
           {/* Quick Links */}
@@ -78,9 +78,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-4 mt-2 text-[11px] md:text-xs text-white/60 flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="border-t border-white/10 pt-4 mt-2 text-[11px] md:text-xs text-white/60 flex flex-col md:flex-row items-center md:items-center justify-between gap-3 text-center md:text-left">
           <p>Copyright 2025 beekperfumes. All right reserved</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-4 gap-y-1">
             <a href="#" className="hover:text-gold transition-colors">
               Privacy Policy
             </a>
