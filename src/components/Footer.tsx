@@ -66,7 +66,7 @@ const Footer = () => {
         {/* Brand + Address */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
           <div className="flex items-center gap-3">
-            <div className="bg-gold p-2">
+            <div>
               <img src={logo} alt="BEEK Perfumes" className="w-6 h-auto" />
             </div>
             <div className="text-[11px] md:text-xs leading-relaxed text-white/70">
