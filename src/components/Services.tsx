@@ -35,7 +35,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="bg-white p-8 md:p-16 rounded-sm shadow-2xl max-w-7xl mx-auto"
+          className="bg-white p-8 md:p-16 rounded-sm shadow-2xl max-w-7xl mx-auto -mt-20 h-[350px]"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {services.map((service, index) => (
