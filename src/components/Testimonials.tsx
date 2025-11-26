@@ -56,8 +56,9 @@ const Testimonials = () => {
 
   return (
     <section className="w-full bg-black py-0">
-      <div className="container mx-auto px-0 md:px-4">
-        <div className="relative h-[420px] md:h-[520px] overflow-hidden rounded-none md:rounded-lg max-w-7xl mx-auto">
+      {/* full width, no container / no max-w */}
+      <div className="w-full">
+        <div className="relative h-[420px] md:h-[520px] overflow-hidden rounded-none">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -102,7 +103,10 @@ const Testimonials = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
                       className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8"
-                      style={{ textShadow: "0 8px 24px rgba(0,0,0,0.5)", fontFamily: "'Playfair Display', serif" }}
+                      style={{
+                        textShadow: "0 8px 24px rgba(0,0,0,0.5)",
+                        fontFamily: "'Playfair Display', serif",
+                      }}
                     >
                       "{testimonials[currentSlide].quote}"
                     </motion.blockquote>
