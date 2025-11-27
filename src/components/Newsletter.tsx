@@ -39,7 +39,7 @@ const Newsletter = () => {
               className="
                 bg-gold shadow-2xl box-border text-center
                 px-8 py-9 w-[90%] max-w-[360px] mx-auto
-                md:px-16 md:py-16 md:w-[596px] md:h-[621px] md:max-w-none
+                md:px-16 md:py-16 md:w-[596px]  md:max-w-none
                 md:absolute md:right-40 md:top-1/2 md:-translate-y-1/2
                 flex flex-col items-center
               "
@@ -80,11 +80,12 @@ const Newsletter = () => {
   onChange={(e) => setEmail(e.target.value)}
   required
   className="
-    w-full max-w-[360px]
+    w-full max-w-[516px]
     bg-transparent border border-dark text-dark
     [&::placeholder]:text-[20px]
     [&::placeholder]:text-dark
-    px-4 py-3 text-sm mb-10
+    px-4 py-6 text-sm mb-10
+    rounded-none
   "
 />
 <div className="flex flex-col items-center">
