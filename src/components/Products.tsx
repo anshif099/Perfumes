@@ -233,7 +233,7 @@ const ProductCard = ({
               transition-all 
               duration-300
             "
-            onClick={() => (window.location.href = "/shop")}
+            onClick={() => (window.location.href = "/Shop")}
           >
             Shop Now
           </Button>

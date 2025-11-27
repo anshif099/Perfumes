@@ -45,7 +45,7 @@ const About = () => {
             </p>
 
             <a
-              href="/ourstory.html"
+              href="/OurStory"
               className=" px-12 py-3 bg-gold hover:bg-gold-dark text-white font-semibold transition-colors text-center max-w-7xl mx-auto text-lg"
             >
               Know More
