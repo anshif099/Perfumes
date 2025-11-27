@@ -73,7 +73,7 @@ const Packaging = () => {
             <img
               src={packagingImage}
               alt="Perfume Packaging"
-              className="w-[734px] h-[624px] object-cover"
+              className="w-[900px] h-[824px] object-cover"
             />
           </motion.div>
         </div>

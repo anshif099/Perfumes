@@ -37,7 +37,7 @@ const Newsletter = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
               className="
-                bg-gold rounded-md shadow-2xl box-border text-center
+                bg-gold shadow-2xl box-border text-center
                 px-8 py-9 w-[90%] max-w-[360px] mx-auto
                 md:px-16 md:py-16 md:w-[596px] md:h-[621px] md:max-w-none
                 md:absolute md:right-40 md:top-1/2 md:-translate-y-1/2
@@ -50,7 +50,7 @@ const Newsletter = () => {
                   font-playfair font-bold
                   text-[28px] md:text-[36px]
                   leading-[1.3]
-                  text-dark mb-4
+                  text-dark mb-1
                   max-w-[443px] h-[48px]
                   mx-auto text-center
                 "
@@ -62,9 +62,9 @@ const Newsletter = () => {
               <p
                 className="
                   font-inter
-                  text-[14px] md:text-[16px]
+                  text-[16px] md:text-[16px]
                   leading-[1.2]
-                  text-dark/90 mb-8
+                  text-dark/90 mb-20
                   max-w-[281px] h-[38px]
                   mx-auto text-center
                 "
@@ -72,20 +72,22 @@ const Newsletter = () => {
                 Get the latest news about Perfume tips and new products.
               </p>
 
-              <form onSubmit={handleSubmit} className="w-full text-center flex flex-col items-center">
+              <form onSubmit={handleSubmit} className="w-full text-center flex flex-col items-center ">
                 <Input
-                  type="email"
-                  placeholder="Enter your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="
-                    w-full max-w-[360px]
-                    bg-transparent border border-dark text-dark
-                    placeholder:text-dark
-                    px-4 py-3 text-sm mb-10
-                  "
-                />
+  type="email"
+  placeholder="Enter your Email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  required
+  className="
+    w-full max-w-[360px]
+    bg-transparent border border-dark text-dark
+    [&::placeholder]:text-[20px]
+    [&::placeholder]:text-dark
+    px-4 py-3 text-sm mb-10
+  "
+/>
+
 
                 <div className="flex flex-col items-center">
                   <Button
@@ -119,8 +121,18 @@ const Newsletter = () => {
                 </div>
 
                 <div className="mt-10 h-px w-full max-w-[360px] bg-dark" />
+                <br></br>
 
-                <p className="mt-5 text-[11px] text-dark/80 leading-relaxed max-w-[320px] mx-auto text-center">
+                <p
+                className="
+                  font-inter
+                  text-[14px] md:text-[14px]
+                  leading-[1.2]
+                  text-dark/90 mb-20
+                  max-w-[281px] h-[38px]
+                  mx-auto text-center
+                "
+              >
                   No Spam, only quality articles to help you be more radiant. You
                   can opt out anytime.
                 </p>

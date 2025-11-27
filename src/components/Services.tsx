@@ -29,7 +29,7 @@ const Services = () => {
   const isInView = useInView(containerRef, { once: true, amount: 0.3 });
 
   return (
-    <section className="w-full bg-black py-10 md:py-20 flex justify-center px-4">
+    <section className="w-full bg-black py-10 md:py-20 flex justify-center px-4 relative -translate-y-32">
       <motion.div
         ref={containerRef}
         initial={{ opacity: 0, y: 30 }}
@@ -40,17 +40,16 @@ const Services = () => {
           w-full 
           max-w-6xl 
           mx-auto 
-          rounded-sm 
           shadow-2xl 
           px-5 
           py-7 
           sm:px-8 
-          sm:py-10 
+          sm:py-10  
           md:px-12 
           md:py-12 
           -mt-12 
           sm:-mt-16 
-          md:-mt-20
+          md:-mt-28
         "
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
@@ -63,8 +62,9 @@ const Services = () => {
               className="flex flex-col items-center text-center"
             >
               {/* Icon circle like reference */}
-              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full border border-[#e5e5e5] flex items-center justify-center mb-4 sm:mb-6">
-                <service.icon className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#f2a900]" />
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-25 md:h-25 rounded-full border border-[#e5e5e5] flex items-center justify-center mb-4 sm:mb-6">
+                <service.icon className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#f2a900]" 
+                strokeWidth={1}/>
               </div>
 
               {/* Title: 323x27, Playfair Display, 20px, semibold */}

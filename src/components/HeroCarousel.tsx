@@ -42,7 +42,7 @@ const HeroCarousel = () => {
   const goToSlide = (index: number) => setCurrentSlide(index);
 
   return (
-    <section className="relative w-full h-[600px] md:h-[850px] mt-20 overflow-hidden">
+    <section className="relative w-full h-[600px] md:h-[850px]  overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
