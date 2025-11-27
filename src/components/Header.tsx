@@ -3,15 +3,18 @@ import { Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
+import { Link } from "react-router-dom";
+
+const MotionLink = motion(Link);
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Collections", href: "/Shop" },
-    { name: "Our Story", href: "/OurStory" },
-    { name: "Contact", href: "/Contact" },
+    { name: "Collections", href: "/Shop" },      // 🔥 MATCHES YOUR ROUTE
+    { name: "Our Story", href: "/OurStory" },   // 🔥 MATCHES YOUR ROUTE
+    { name: "Contact", href: "/Contact" },      // 🔥 MATCHES YOUR ROUTE
   ];
 
   return (
@@ -24,24 +27,24 @@ const Header = () => {
           transition={{ duration: 0.5 }}
           className="flex items-center"
         >
-          <a href="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="BEEK Perfumes logo" className="h-12 w-auto" />
-          </a>
+          </Link>
         </motion.div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link, index) => (
-            <motion.a
+            <MotionLink
               key={link.name}
-              href={link.href}
+              to={link.href}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               className="inline-flex items-center justify-center px-3 py-1 text-sm leading-none whitespace-nowrap text-white/95 hover:text-gold transition-colors font-medium"
             >
               {link.name}
-            </motion.a>
+            </MotionLink>
           ))}
         </nav>
 
@@ -96,14 +99,14 @@ const Header = () => {
           >
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   className="inline-flex items-center justify-start text-white/95 hover:text-gold transition-colors text-base leading-none font-medium py-3 border-b border-white/5 last:border-b-0"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </nav>
           </motion.div>
