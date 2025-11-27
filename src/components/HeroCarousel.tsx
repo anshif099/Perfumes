@@ -42,7 +42,7 @@ const HeroCarousel = () => {
   const goToSlide = (index: number) => setCurrentSlide(index);
 
   return (
-    <section className="relative w-full h-[600px] md:h-[850px]  overflow-hidden">
+    <section className="relative w-full min-h-[420px] sm:min-h-[520px] md:min-h-[650px] lg:min-h-[800px] overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -53,86 +53,99 @@ const HeroCarousel = () => {
           className="absolute inset-0"
         >
           <div
-            className="w-full h-full bg-cover bg-center relative"
+            className={`
+              w-full h-full bg-center relative
+              bg-cover
+              /* If you want ZERO cropping (no zoom at all), replace 'bg-cover' with:
+                 'bg-contain bg-no-repeat bg-black' */
+            `}
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           >
-            <div className="absolute inset-0 bg-black/20" />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/30" />
 
+            {/* CONTENT */}
             <div
-              className={`absolute top-1/2 -translate-y-1/2 px-6 md:px-12 ${
-                slides[currentSlide].position === "right"
-                  ? "right-8 md:right-16 text-right"
-                  : "left-8 md:left-16 text-left"
-              }`}
+              className={`absolute inset-x-4 sm:inset-x-8 md:inset-x-16 
+                          top-1/2 -translate-y-1/2 
+                          flex ${
+                            slides[currentSlide].position === "right"
+                              ? "justify-end"
+                              : "justify-start"
+                          }`}
             >
-              {/* TITLE */}
-              <motion.h1
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className={`font-semibold leading-tight mb-6 whitespace-pre-line ${slides[currentSlide].textColor} drop-shadow-2xl`}
-                style={{
-                  width: "661px",
-                  height: "160px",
-                  overflow: "hidden",
-                  fontSize: "60px",
-                  lineHeight: "80px",
-                  textShadow: "0 6px 16px rgba(0,0,0,0.45)",
-                  fontFamily: "'Playfair Display'",
-                }}
+              <div
+                className={`
+                  max-w-full sm:max-w-xl md:max-w-2xl
+                  ${slides[currentSlide].position === "right" ? "text-right" : "text-left"}
+                `}
               >
-                {slides[currentSlide].title}
-              </motion.h1>
-
-              {/* DESCRIPTION */}
-              <motion.p
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className={`${slides[currentSlide].textColor}`}
-                style={{
-                  width: "661px",
-                  height: "19px",
-                  overflow: "hidden",
-                  fontSize: "16px",
-                  lineHeight: "19px",
-                  fontFamily: "'Inter'",
-                  opacity: 0.95,
-                }}
-              >
-                {slides[currentSlide].description}
-              </motion.p>
-
-              {/* BUTTON */}
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
-                className="mt-8"
-              >
-                <Button
-                  size="lg"
-                  className={`${
-                    slides[currentSlide].textColor === "text-white"
-                      ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black"
-                      : "bg-transparent border-2 border-black text-black hover:bg-black hover:text-white"
-                  } transition-all duration-300`}
+                {/* TITLE */}
+                <motion.h1
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className={`
+                    font-semibold whitespace-pre-line mb-4 sm:mb-6
+                    ${slides[currentSlide].textColor} drop-shadow-2xl
+                    text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+                    leading-tight
+                    font-['Playfair_Display']
+                  `}
                 >
-                  Shop Now
-                </Button>
-              </motion.div>
+                  {slides[currentSlide].title}
+                </motion.h1>
+
+                {/* DESCRIPTION */}
+                <motion.p
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className={`
+                    ${slides[currentSlide].textColor}
+                    font-['Inter'] opacity-95
+                    text-sm sm:text-base md:text-lg
+                    max-w-md sm:max-w-lg md:max-w-xl
+                  `}
+                >
+                  {slides[currentSlide].description}
+                </motion.p>
+
+                {/* BUTTON */}
+                <motion.div
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.8 }}
+                  className={`mt-6 sm:mt-8 ${
+                    slides[currentSlide].position === "right"
+                      ? "flex justify-end"
+                      : "flex justify-start"
+                  }`}
+                >
+                  <Button
+                    size="lg"
+                    className={`${
+                      slides[currentSlide].textColor === "text-white"
+                        ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black"
+                        : "bg-transparent border-2 border-black text-black hover:bg-black hover:text-white"
+                    } transition-all duration-300 px-6 sm:px-8 py-3 text-sm sm:text-base`}
+                  >
+                    Shop Now
+                  </Button>
+                </motion.div>
+              </div>
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
 
       {/* DOTS */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               currentSlide === index
                 ? "bg-white scale-125"
                 : "bg-white/30 hover:bg-white/50"
