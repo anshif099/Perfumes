@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -19,6 +20,7 @@ const FILTERS = ["All", "Floral", "Oriental", "Woody", "Fresh", "Citrus"];
 
 const Shop: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
+  const navigate = useNavigate();
 
   const filteredProducts = useMemo(() => {
     if (activeFilter === "All") return PRODUCTS;
@@ -33,7 +35,9 @@ const Shop: React.FC = () => {
       img: product.img,
       tags: product.tags.join(","),
     });
-    window.location.href = `/ProductDetails?${params.toString()}`;
+
+    // client-side navigation (no full page reload)
+    navigate(`/ProductDetails?${params.toString()}`);
   };
 
   return (
@@ -146,7 +150,7 @@ const Shop: React.FC = () => {
               </div>
 
               <div className="px-3 pb-4 pt-4">
-                {/* Tags: Oriental / Floral style */}
+                {/* Tags */}
                 <div className="mb-2 flex flex-wrap gap-1">
                   {product.tags.map((tag) => (
                     <span
@@ -158,22 +162,23 @@ const Shop: React.FC = () => {
                   ))}
                 </div>
 
-                {/* TITLE – Playfair 48px */}
-               <h3 className="font-['Playfair_Display'] text-[20px] leading-[1.1] font-semibold text-slate-900">
-  {product.title}
-</h3>
-           {/* DESCRIPTION – Inter 14px */}
+                {/* TITLE */}
+                <h3 className="font-['Playfair_Display'] text-[20px] leading-[1.1] font-semibold text-slate-900">
+                  {product.title}
+                </h3>
+
+                {/* DESCRIPTION */}
                 <p className="mt-2 line-clamp-2 font-Inter text-[14px] leading-relaxed text-slate-500">
                   {product.description}
                 </p>
 
                 <div className="mt-4 flex items-center justify-between">
-                  {/* Price style */}
+                  {/* Price */}
                   <div className="font-['Playfair_Display'] text-xl text-[#d9a93b]">
                     ${product.price}
                   </div>
 
-                  {/* View Details link style */}
+                  {/* View Details */}
                   <button
                     type="button"
                     onClick={() => handleDetailsClick(product)}
