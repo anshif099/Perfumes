@@ -38,57 +38,61 @@ const Newsletter = () => {
               transition={{ duration: 0.8 }}
               className="
                 bg-gold shadow-2xl box-border text-center
-                px-8 py-9 w-[90%] max-w-[360px] mx-auto
-                md:px-16 md:py-16 md:w-[596px]  md:max-w-none
+                px-8 py-6 w-[90%] max-w-[360px] mx-auto
+                md:px-16 md:py-10 md:w-[596px] md:max-w-none
                 md:absolute md:right-40 md:top-1/2 md:-translate-y-1/2
                 flex flex-col items-center
               "
             >
-              {/* H3: Playfair Bold 36px, 443 x 48, single line */}
+              {/* H3: Playfair Bold 36px */}
               <h3
                 className="
                   font-playfair font-bold
                   text-[28px] md:text-[36px]
                   leading-[1.3]
                   text-dark mb-1
-                  max-w-[443px] h-[48px]
+                  max-w-[443px]
                   mx-auto text-center
                 "
               >
                 Subscribe Our Newsletter
               </h3>
 
-              {/* Paragraph: Inter Regular 16px, 281 x 38 */}
+              {/* Paragraph: Inter Regular 16px */}
               <p
                 className="
                   font-inter
                   text-[16px] md:text-[16px]
                   leading-[1.2]
-                  text-dark/90 mb-20
-                  max-w-[281px] h-[38px]
+                  text-dark/90 mb-8
+                  max-w-[281px]
                   mx-auto text-center
                 "
               >
                 Get the latest news about Perfume tips and new products.
               </p>
-
-              <form onSubmit={handleSubmit} className="w-full text-center flex flex-col items-center ">
+<br></br><br></br>
+              <form
+                onSubmit={handleSubmit}
+                className="w-full text-center flex flex-col items-center"
+              >
                 <Input
-  type="email"
-  placeholder="Enter your Email"
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-  required
-  className="
-    w-full max-w-[516px]
-    bg-transparent border border-dark text-dark
-    [&::placeholder]:text-[20px]
-    [&::placeholder]:text-dark
-    px-4 py-6 text-sm mb-10
-    rounded-none
-  "
-/>
-<div className="flex flex-col items-center">
+                  type="email"
+                  placeholder="Enter your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="
+                    w-full max-w-[516px]
+                    bg-transparent border border-dark text-dark
+                    [&::placeholder]:text-[20px]
+                    [&::placeholder]:text-dark
+                    px-4 py-6 text-sm mb-10
+                    rounded-none
+                  "
+                />
+
+                <div className="flex flex-col items-center">
                   <Button
                     type="submit"
                     size="icon"
@@ -119,22 +123,21 @@ const Newsletter = () => {
                   </span>
                 </div>
 
-                <div className="mt-10 h-px w-full max-w-[360px] bg-dark" />
-                <br></br>
+                <div className="mt-6 h-px w-full max-w-[516px] bg-dark" />
 
                 <p
-                className="
-                  font-inter
-                  text-[14px] md:text-[14px]
-                  leading-[1.2]
-                  text-dark/90 mb-20
-                  max-w-[281px] h-[38px]
-                  mx-auto text-center
-                "
-              >
+                  className="
+                    font-inter
+                    text-[14px] md:text-[14px]
+                    leading-[1.2]
+                    text-dark/90 mb-0
+                    max-w-[281px]
+                    mx-auto text-center mt-6
+                  "
+                >
                   No Spam, only quality articles to help you be more radiant. You
                   can opt out anytime.
-                </p>
+                </p><br></br><br></br>
               </form>
             </motion.div>
           </div>
