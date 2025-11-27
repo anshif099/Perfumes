@@ -1,9 +1,4 @@
-# TODO: Update Button Styling
+# TODO: Remove all font families except Playfair Display and Inter
 
-- [ ] Update `src/components/ui/button.tsx`:
-  - [ ] Change base class "text-sm" to "text-xl" for 20px text size.
-  - [ ] Set all size variants (default, sm, lg, icon) to "h-[54px] w-[290px]" for 290px width and 54px height.
-
-- [ ] Followup steps:
-  - [ ] Verify button appearance after changes.
-  - [ ] Test across pages to ensure consistency.
+- [x] Update src/index.css: Change body font-family to 'Inter' only, remove fallbacks like -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+- [x] Update src/components/Testimonials.tsx: Remove serif and sans-serif fallbacks from fontFamily styles
