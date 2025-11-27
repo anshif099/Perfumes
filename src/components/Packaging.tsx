@@ -20,14 +20,37 @@ const Packaging = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="bg-white p-10 md:p-20 rounded-sm shadow-lg text-center"
+            className="bg-white rounded-sm shadow-lg text-center flex flex-col items-center justify-center w-[659px] h-[561px] mx-auto"
           >
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight text-foreground mb-6">
+            <h2
+              className="
+                text-5xl
+                font-semibold
+                leading-tight
+                text-foreground
+                mb-6
+                w-[582px]
+                h-[128px]
+                mx-auto
+                font-['Playfair_Display']
+              "
+            >
               Experience the Art of <br />
               Presentation
             </h2>
 
-            <p className="text-base md:text-lg text-foreground/70 leading-relaxed mb-10 max-w-3xl mx-auto">
+            <p
+              className="
+                text-[16px]
+                text-foreground/70
+                leading-relaxed
+                mb-10
+                w-[582px]
+                h-[70px]
+                mx-auto
+                font-['Inter']
+              "
+            >
               At Beek, every package is designed with elegance and intention—crafted
               to elevate your fragrance experience from the very first glance.
             </p>
@@ -43,18 +66,14 @@ const Packaging = () => {
           {/* Right: Image */}
           <motion.div
             initial={{ opacity: 0, x: 50, rotate: 0 }}
-            animate={
-              isInView
-                ? { opacity: 1, x: 0 }
-                : { opacity: 0, x: 50 }
-            }
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center items-center"
           >
             <img
               src={packagingImage}
               alt="Perfume Packaging"
-              className="w-full max-w-md h-[500px] object-cover"
+              className="w-[734px] h-[624px] object-cover"
             />
           </motion.div>
         </div>

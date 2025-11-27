@@ -128,7 +128,6 @@ const Products = () => {
 
   return (
     <section id="products" ref={sectionRef} className="w-full bg-white">
-
       {/* Top white gap */}
       <div className="h-8 bg-white" />
 
@@ -181,9 +180,9 @@ const ProductCard = ({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-[260px] md:w-[330px] lg:w-[450px] flex-shrink-0 bg-white"
+      className="relative w-[480px] flex-shrink-0 bg-white"
     >
-      <div className="relative h-[460px] md:h-[550px] overflow-hidden">
+      <div className="relative h-[652px] overflow-hidden">
         <div
           className="w-full h-full bg-cover bg-center"
           style={{ backgroundImage: `url(${product.image})` }}
@@ -191,34 +190,33 @@ const ProductCard = ({
 
         {/* GLASS GOLD PANEL */}
         <motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: isHovered ? 1 : 0 }}
-  transition={{ duration: 0.25 }}
-  className="
-    absolute
-    top-[18%]
-    left-1/2
-    -translate-x-1/2
-    w-[78%]
-    px-6
-    py-5
-    backdrop-blur-sm
-    bg-[#f3e5cc]/45
-    border border-[#e8cfa2]/60
-    shadow-sm
-  "
->
-  <h3 className="text-2xl font-medium mb-2 text-black">
-    {product.title}
-  </h3>
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="
+            absolute
+            top-[18%]
+            left-1/2
+            -translate-x-1/2
+            w-[78%]
+            px-6
+            py-5
+            backdrop-blur-sm
+            bg-[#f3e5cc]/45
+            border border-[#e8cfa2]/60
+            shadow-sm
+          "
+        >
+          <h3 className="text-2xl font-medium mb-2 text-black">
+            {product.title}
+          </h3>
 
-  <div className="text-sm text-black leading-relaxed">
-    <p>Top: {product.notes.top}</p>
-    <p className="mt-1">Heart: {product.notes.heart}</p>
-    <p className="mt-1">Base: {product.notes.base}</p>
-  </div>
-</motion.div>
-
+          <div className="text-sm text-black leading-relaxed">
+            <p>Top: {product.notes.top}</p>
+            <p className="mt-1">Heart: {product.notes.heart}</p>
+            <p className="mt-1">Base: {product.notes.base}</p>
+          </div>
+        </motion.div>
 
         {/* Button */}
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center pb-4">

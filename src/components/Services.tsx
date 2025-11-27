@@ -62,15 +62,40 @@ const Services = () => {
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className="flex flex-col items-center text-center"
             >
-              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full border border-gray-300 flex items-center justify-center mb-4 sm:mb-6">
-                <service.icon className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 text-foreground" />
+              {/* Icon circle like reference */}
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full border border-[#e5e5e5] flex items-center justify-center mb-4 sm:mb-6">
+                <service.icon className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#f2a900]" />
               </div>
 
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-foreground">
+              {/* Title: 323x27, Playfair Display, 20px, semibold */}
+              <h3
+                className="
+                  font-['Playfair_Display'] 
+                  font-semibold 
+                  text-[20px] 
+                  leading-[27px]
+                  text-foreground
+                  w-[323px]
+                  h-[27px]
+                  mb-2
+                  sm:mb-3
+                "
+              >
                 {service.title}
               </h3>
 
-              <p className="text-xs sm:text-sm md:text-base text-foreground/70 leading-relaxed max-w-xs">
+              {/* Description: 317x50, Inter, 14px, light */}
+              <p
+                className="
+                  font-['Inter']
+                  font-light
+                  text-[14px]
+                  leading-[25px]
+                  text-foreground/70
+                  w-[317px]
+                  h-[50px]
+                "
+              >
                 {service.description}
               </p>
             </motion.div>

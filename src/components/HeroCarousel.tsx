@@ -36,13 +36,10 @@ const HeroCarousel = () => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
+  const goToSlide = (index: number) => setCurrentSlide(index);
 
   return (
     <section className="relative w-full h-[600px] md:h-[850px] mt-20 overflow-hidden">
@@ -62,36 +59,56 @@ const HeroCarousel = () => {
             <div className="absolute inset-0 bg-black/20" />
 
             <div
-              className={`absolute top-1/2 -translate-y-1/2 max-w-xl px-6 md:px-12 ${
+              className={`absolute top-1/2 -translate-y-1/2 px-6 md:px-12 ${
                 slides[currentSlide].position === "right"
                   ? "right-8 md:right-16 text-right"
                   : "left-8 md:left-16 text-left"
               }`}
             >
+              {/* TITLE */}
               <motion.h1
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-              className={`text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 whitespace-pre-line ${slides[currentSlide].textColor} drop-shadow-2xl`}
-                style={{ textShadow: "0 6px 16px rgba(0,0,0,0.45)", fontFamily: "'Playfair Display'" }}
+                className={`font-semibold leading-tight mb-6 whitespace-pre-line ${slides[currentSlide].textColor} drop-shadow-2xl`}
+                style={{
+                  width: "661px",
+                  height: "160px",
+                  overflow: "hidden",
+                  fontSize: "60px",
+                  lineHeight: "80px",
+                  textShadow: "0 6px 16px rgba(0,0,0,0.45)",
+                  fontFamily: "'Playfair Display'",
+                }}
               >
                 {slides[currentSlide].title}
               </motion.h1>
 
+              {/* DESCRIPTION */}
               <motion.p
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className={`text-lg md:text-xl mb-8 ${slides[currentSlide].textColor} opacity-95`}
-                style={{ fontFamily: "'Inter'" }}
+                className={`${slides[currentSlide].textColor}`}
+                style={{
+                  width: "661px",
+                  height: "19px",
+                  overflow: "hidden",
+                  fontSize: "16px",
+                  lineHeight: "19px",
+                  fontFamily: "'Inter'",
+                  opacity: 0.95,
+                }}
               >
                 {slides[currentSlide].description}
               </motion.p>
 
+              {/* BUTTON */}
               <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.8 }}
+                className="mt-8"
               >
                 <Button
                   size="lg"
@@ -109,7 +126,7 @@ const HeroCarousel = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Dots Navigation */}
+      {/* DOTS */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
         {slides.map((_, index) => (
           <button

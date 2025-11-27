@@ -11,8 +11,13 @@ const DarkHero = () => {
   return (
     <section
       ref={ref}
-      className="relative w-full h-[500px] md:h-[620px] bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: `url(${darkHeroImage})` }}
+      className="relative w-full flex items-center justify-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${darkHeroImage})`,
+        backgroundSize: "1440px 1074px",
+        minHeight: "1074px",
+        backgroundPosition: "center",
+      }}
     >
       <div className="absolute inset-0 bg-black/50" />
 
@@ -20,11 +25,21 @@ const DarkHero = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
-        className="relative z-10 text-center max-w-4xl px-6"
+        className="relative z-10 text-center px-6"
+        style={{ width: "787px" }}
       >
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8">
+        <h2
+          className="text-white leading-tight mb-8 mx-auto"
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "36px",
+            height: "96px",
+            width: "787px",
+          }}
+        >
           Our rich fragrance collections ensure you make
-          <br className="hidden md:block" />a memorable and distinctive impact.
+          <br className="hidden md:block" />
+          a memorable and distinctive impact.
         </h2>
 
         <Button

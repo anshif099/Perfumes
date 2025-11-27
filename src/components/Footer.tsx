@@ -1,9 +1,15 @@
 import logo from "@/assets/logo.png";
+import { MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer id="footer" className="w-full bg-black text-white/80">
       <div className="max-w-7xl mx-auto px-4 pt-10 pb-10">
+        {/* Mobile logo (centered, like 2nd image) */}
+        <div className="flex justify-center mb-8 md:hidden">
+          <img src={logo} alt="BEEK Perfumes" className="w-16 h-auto" />
+        </div>
+
         {/* Top link columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 pb-10">
           {/* Quick Links */}
@@ -63,17 +69,40 @@ const Footer = () => {
           <div className="hidden md:block" />
         </div>
 
-        {/* Brand + Address */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
-          <div className="flex items-center gap-3">
-            <div>
-              <img src={logo} alt="BEEK Perfumes" className="w-6 h-auto" />
+        {/* Brand + Address (desktop layout with icons, like 1st image) */}
+        <div className="hidden md:flex items-start gap-4 mb-8">
+          <img src={logo} alt="BEEK Perfumes" className="w-10 h-auto" />
+
+          <div className="text-xs leading-relaxed text-white/70 space-y-2">
+            {/* Address with pin icon */}
+            <div className="flex items-start gap-2">
+              <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+              <div>
+                <p>BK Tower, Oud Metha, Dubai,</p>
+                <p>United Arab Emirates</p>
+              </div>
             </div>
-            <div className="text-[11px] md:text-xs leading-relaxed text-white/70">
+
+            {/* Phone with phone icon */}
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4 shrink-0" />
+              <p>+971 (0) 55 114 1144</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile address + icons (stacked under links) */}
+        <div className="md:hidden mb-8 text-[11px] leading-relaxed text-white/70 space-y-3">
+          <div className="flex items-start gap-2 justify-center">
+            <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+            <div className="text-center">
               <p>BK Tower, Oud Metha, Dubai,</p>
               <p>United Arab Emirates</p>
-              <p className="mt-1">+971 (0) 55 114 1144</p>
             </div>
+          </div>
+          <div className="flex items-center gap-2 justify-center">
+            <Phone className="w-4 h-4 shrink-0" />
+            <p>+971 (0) 55 114 1144</p>
           </div>
         </div>
 
