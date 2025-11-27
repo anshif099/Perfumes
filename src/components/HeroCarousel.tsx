@@ -42,7 +42,13 @@ const HeroCarousel = () => {
   const goToSlide = (index: number) => setCurrentSlide(index);
 
   return (
-    <section className="relative w-full min-h-[420px] sm:min-h-[520px] md:min-h-[650px] lg:min-h-[800px] overflow-hidden">
+    <section
+      className="
+        relative w-full
+        min-h-[520px] sm:min-h-[650px] lg:min-h-[850px]
+        overflow-hidden bg-black
+      "
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -52,32 +58,39 @@ const HeroCarousel = () => {
           transition={{ duration: 1 }}
           className="absolute inset-0"
         >
-          <div
-            className={`
-              w-full h-full bg-center relative
-              bg-cover
-              /* If you want ZERO cropping (no zoom at all), replace 'bg-cover' with:
-                 'bg-contain bg-no-repeat bg-black' */
-            `}
-            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
-          >
+         <div
+  className="
+    w-full h-full
+    bg-center bg-cover
+    relative
+  "
+  style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+>
+
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-black/30" />
 
             {/* CONTENT */}
             <div
-              className={`absolute inset-x-4 sm:inset-x-8 md:inset-x-16 
-                          top-1/2 -translate-y-1/2 
-                          flex ${
-                            slides[currentSlide].position === "right"
-                              ? "justify-end"
-                              : "justify-start"
-                          }`}
+              className={`
+                absolute inset-x-4 sm:inset-x-10 lg:inset-x-20
+                top-1/2 -translate-y-1/2
+                flex
+                ${
+                  slides[currentSlide].position === "right"
+                    ? "justify-end"
+                    : "justify-start"
+                }
+              `}
             >
               <div
                 className={`
-                  max-w-full sm:max-w-xl md:max-w-2xl
-                  ${slides[currentSlide].position === "right" ? "text-right" : "text-left"}
+                  max-w-full sm:max-w-xl lg:max-w-2xl
+                  ${
+                    slides[currentSlide].position === "right"
+                      ? "text-right"
+                      : "text-left"
+                  }
                 `}
               >
                 {/* TITLE */}
@@ -86,11 +99,13 @@ const HeroCarousel = () => {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
                   className={`
-                    font-semibold whitespace-pre-line mb-4 sm:mb-6
+                    mb-4 sm:mb-6
                     ${slides[currentSlide].textColor} drop-shadow-2xl
-                    text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-                    leading-tight
                     font-['Playfair_Display']
+                    font-semibold
+                    leading-tight
+                    text-[36px] sm:text-[48px] lg:text-[64px]
+                    whitespace-pre-line
                   `}
                 >
                   {slides[currentSlide].title}
@@ -103,9 +118,9 @@ const HeroCarousel = () => {
                   transition={{ delay: 0.5, duration: 0.8 }}
                   className={`
                     ${slides[currentSlide].textColor}
-                    font-['Inter'] opacity-95
-                    text-sm sm:text-base md:text-lg
-                    max-w-md sm:max-w-lg md:max-w-xl
+                    font-['Inter'] font-normal opacity-95
+                    text-[16px]
+                    max-w-md sm:max-w-lg lg:max-w-xl
                   `}
                 >
                   {slides[currentSlide].description}
@@ -124,11 +139,17 @@ const HeroCarousel = () => {
                 >
                   <Button
                     size="lg"
-                    className={`${
-                      slides[currentSlide].textColor === "text-white"
-                        ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black"
-                        : "bg-transparent border-2 border-black text-black hover:bg-black hover:text-white"
-                    } transition-all duration-300 px-6 sm:px-8 py-3 text-sm sm:text-base`}
+                    className={`
+                      w-[290px] h-[54px]
+                      font-['Inter'] font-normal
+                      text-[18px] sm:text-[20px] leading-[24px]
+                      ${
+                        slides[currentSlide].textColor === "text-white"
+                          ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black"
+                          : "bg-transparent border-2 border-black text-black hover:bg-black hover:text-white"
+                      }
+                      transition-all duration-300
+                    `}
                   >
                     Shop Now
                   </Button>
@@ -145,11 +166,15 @@ const HeroCarousel = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-              currentSlide === index
-                ? "bg-white scale-125"
-                : "bg-white/30 hover:bg-white/50"
-            }`}
+            className={`
+              w-2 h-2 sm:w-3 sm:h-3 rounded-full
+              transition-all duration-300
+              ${
+                currentSlide === index
+                  ? "bg-white scale-125"
+                  : "bg-white/30 hover:bg-white/50"
+              }
+            `}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
