@@ -87,9 +87,7 @@ const Newsletter = () => {
     px-4 py-3 text-sm mb-10
   "
 />
-
-
-                <div className="flex flex-col items-center">
+<div className="flex flex-col items-center">
                   <Button
                     type="submit"
                     size="icon"

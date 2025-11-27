@@ -31,7 +31,7 @@ const DarkHero = () => {
         <h2
           className="text-white leading-tight mb-8 mx-auto"
           style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "'Playfair Display'",
             fontSize: "36px",
             height: "96px",
             width: "787px",
