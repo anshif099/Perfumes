@@ -23,7 +23,7 @@ const Newsletter = () => {
 
   return (
     <section ref={ref} className="w-full">
-      <div className="pt-10 pb-0">
+      <div className="pb-0">
         <div
           className="relative w-full bg-cover bg-center bg-no-repeat flex items-center justify-center md:block"
           style={{
