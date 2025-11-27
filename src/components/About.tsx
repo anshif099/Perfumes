@@ -50,7 +50,7 @@ const About = () => {
             {/* BUTTON */}
             <a
               href="/OurStory"
-              className="px-12 py-3 bg-gold hover:bg-gold-dark text-white font-semibold transition-colors text-center text-lg inline-flex items-center justify-center"
+              className=" px-12 py-3 bg-gold hover:bg-gold-dark text-white font-semibold transition-colors text-center text-lg inline-flex items-center justify-center"
             >
               Know More
             </a>
