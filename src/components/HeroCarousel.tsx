@@ -15,7 +15,7 @@ const slides = [
   },
   {
     image: hero2,
-    title: "A scent that lingers with \n elegance.",
+    title: "A scent that lingers \n with  elegance.",
     description: "Created for those who appreciate the art of fine perfume, every layer unfolds with intention and emotion.",
     textColor: "text-white",
     position: "left",
