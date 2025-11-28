@@ -13,7 +13,6 @@ type Product = {
   tags: string[];
   img: string;
   ribbon?: string;
-  ribbonColor?: "default" | "blue";
 };
 
 const FILTERS = ["All", "Floral", "Oriental", "Woody", "Fresh", "Citrus"];
@@ -24,7 +23,7 @@ const Shop: React.FC = () => {
 
   const filteredProducts = useMemo(() => {
     if (activeFilter === "All") return PRODUCTS;
-    return PRODUCTS.filter((p) => p.tags.includes(activeFilter));
+    return PRODUCTS.filter(p => p.tags.includes(activeFilter));
   }, [activeFilter]);
 
   const handleDetailsClick = (product: Product) => {
@@ -36,7 +35,6 @@ const Shop: React.FC = () => {
       tags: product.tags.join(","),
     });
 
-    // client-side navigation (no full page reload)
     navigate(`/ProductDetails?${params.toString()}`);
   };
 
@@ -46,36 +44,31 @@ const Shop: React.FC = () => {
 
       {/* HERO */}
       <section className="relative -mt-[76px] flex min-h-[80vh] items-center pt-[100px] text-white">
-        {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/image2.jpg')" }}
         />
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60" />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl px-6 md:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-8">
           <div className="max-w-xl">
-            {/* Luxury Fragrances badge */}
-            <div className="inline-block border border-[#d9a93b] px-6 py-2 text-xs font-semibold tracking-wide text-[#ffff] font-Inter bg-[#d9a93b]/20">
+            <div className="inline-block border border-[#d9a93b] bg-[#d9a93b]/20 px-6 py-2 text-xs font-semibold tracking-wide text-white font-Inter">
               Luxury Fragrances
             </div>
 
-<h1 className="mt-5 font-['Playfair_Display'] text-[36px] md:text-[48px] lg:text-[64px] leading-tight tracking-tight font-bold">
+            <h1 className="mt-5 font-['Playfair_Display'] text-[36px] md:text-[48px] lg:text-[64px] font-bold leading-tight">
               Our Collections
             </h1>
 
-            <p className="mt-4 max-w-lg font-Inter text-base leading-relaxed text-white/90 md:text-lg">
-              Discover our curated selection of luxury fragrances, each
-              meticulously crafted to capture moments of elegance and emotion.
-              From fresh florals to deep orientals.
+            <p className="mt-4 max-w-lg font-Inter text-white/90">
+              Discover our curated selection of luxury fragrances, crafted to evoke elegance and emotion.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <button className="inline-flex h-11 items-center justify-center bg-[#d9a93b] px-6 text-sm font-semibold text-white shadow-md transition hover:bg-[#c8892f] hover:shadow-lg active:scale-95 rounded-none">
+            <div className="mt-8 flex gap-4">
+              <button className="bg-[#d9a93b] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#c8892f] rounded-none">
                 Explore Collection
               </button>
-              <button className="inline-flex h-11 items-center justify-center border border-white/40 bg-transparent px-6 text-sm font-semibold text-white transition hover:bg-white/10 hover:border-white rounded-none">
+              <button className="border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 rounded-none">
                 View Best Sellers
               </button>
             </div>
@@ -83,106 +76,102 @@ const Shop: React.FC = () => {
         </div>
       </section>
 
-      {/* MAIN CONTENT */}
-      <main
-        id="collections"
-        className="mx-auto max-w-6xl px-6 pb-16 pt-16 md:px-8"
-      >
-        {/* FILTER ROW */}
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex w-full items-center gap-4 overflow-hidden md:w-auto">
-            <span className="whitespace-nowrap text-sm text-slate-500 font-Inter">
+      {/* MAIN */}
+      <main className="mx-auto max-w-6xl px-6 py-16 md:px-8">
+
+        {/* FILTER BAR */}
+        <div className="mb-8 flex flex-wrap items-center gap-4 justify-between">
+          <div className="flex gap-4 items-center overflow-x-auto">
+            <span className="text-sm text-slate-500 font-Inter">
               Filter by scent:
             </span>
-            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
-              {FILTERS.map((filter) => (
-                <button
-                  key={filter}
-                  type="button"
-                  onClick={() => setActiveFilter(filter)}
-                  className={`whitespace-nowrap px-4 py-2 text-xs font-semibold transition rounded-none font-Inter ${
-                    activeFilter === filter
-                      ? "border border-slate-900 bg-slate-900 text-white"
-                      : "border border-slate-200 bg-white text-slate-500 hover:border-slate-900/60 hover:text-slate-900"
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
+
+            {FILTERS.map(filter => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-none font-Inter transition-all duration-200 active:scale-95 ${
+                  activeFilter === filter
+                    ? "bg-[#d9a93b] text-white shadow-md"
+                    : "bg-white text-slate-500 border border-slate-200 hover:border-[#d9a93b] hover:text-[#d9a93b]"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
           </div>
 
-          <div className="ml-auto text-sm text-slate-500 max-sm:hidden font-Inter">
+          <div className="text-sm text-slate-500 font-Inter hidden sm:block">
             Showing {filteredProducts.length} fragrances
           </div>
         </div>
 
-        {/* PRODUCTS GRID */}
-        <section
-          aria-label="perfume products"
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        >
-          {filteredProducts.map((product) => (
+        {/* GRID */}
+        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filteredProducts.map(product => (
             <article
               key={product.id}
-              className="group overflow-hidden rounded-[14px] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              className="group bg-white shadow-sm transition hover:shadow-xl hover:-translate-y-1 rounded-[14px] overflow-hidden"
             >
-              <div className="relative bg-slate-100 pb-[120%]">
+              <div className="relative pb-[120%] bg-slate-100">
                 <img
                   src={product.img}
                   alt={product.title}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
+
+                {/* RIBBON */}
                 {product.ribbon && (
                   <span
-                    className={`absolute left-3 top-3 rounded px-3 py-1 text-[11px] font-bold uppercase tracking-wide shadow-md ${
-                      product.ribbonColor === "blue"
-                        ? "bg-blue-600 text-white"
-                        : "bg-white text-slate-900"
-                    }`}
+                    className="
+                      absolute left-3 top-3
+                      bg-[#d9a93b]
+                      text-white
+                      px-3 py-1
+                      text-[11px]
+                      font-semibold
+                      uppercase
+                      tracking-wider
+                      shadow-md
+                      rounded-none
+                      font-Inter
+                    "
                   >
                     {product.ribbon}
                   </span>
                 )}
               </div>
 
-              <div className="px-3 pb-4 pt-4">
-                {/* Tags */}
+              <div className="p-4">
+                {/* TAGS */}
                 <div className="mb-2 flex flex-wrap gap-1">
-                  {product.tags.map((tag) => (
+                  {product.tags.map(tag => (
                     <span
                       key={tag}
-                      className="inline-block bg-[#fff4e0] px-3 py-1 text-[11px] font-medium text-[#d9a93b] rounded-none font-Inter"
+                      className="bg-[#fff4e0] text-[#d9a93b] text-[11px] px-3 py-1 font-medium font-Inter rounded-none"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* TITLE */}
-                <h3 className="font-['Playfair_Display'] text-[20px] leading-[1.1] font-semibold text-slate-900">
+                <h3 className="font-['Playfair_Display'] text-[18px] font-semibold text-slate-900">
                   {product.title}
                 </h3>
 
-                {/* DESCRIPTION */}
-                <p className="mt-2 line-clamp-2 font-Inter text-[14px] leading-relaxed text-slate-500">
+                <p className="mt-2 text-sm text-slate-500 font-Inter line-clamp-2">
                   {product.description}
                 </p>
 
-                <div className="mt-4 flex items-center justify-between">
-                  {/* Price */}
-                  <div className="font-['Playfair_Display'] text-xl text-[#d9a93b]">
+                <div className="mt-4 flex justify-between items-center">
+                  <span className="font-['Playfair_Display'] text-[#d9a93b] text-lg">
                     ${product.price}
-                  </div>
+                  </span>
 
-                  {/* View Details */}
-                  <button
-                    type="button"
-                    onClick={() => handleDetailsClick(product)}
-                    className="flex items-center gap-1 text-sm font-semibold text-slate-800 hover:text-slate-900 hover:underline rounded-none"
-                  >
-                    View Details &rarr;
+                  <button 
+                    onClick={() => handleDetailsClick(product)} 
+                    className="text-sm font-semibold hover:underline text-slate-800 rounded-none">
+                    View Details →
                   </button>
                 </div>
               </div>
