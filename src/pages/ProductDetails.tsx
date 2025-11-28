@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Header from "../components/Header";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
+import ProductHero from "@/components/ProductHero";
 
 type Product = {
   title: string;
@@ -343,6 +344,7 @@ const ProductDetails: React.FC = () => {
   return (
     <main className="bg-white">
         <Header />
+        <ProductHero />
       {/* PRODUCT SECTION */}
       <section className="py-14">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
