@@ -33,7 +33,7 @@ const OurStory: React.FC = () => {
                 <h1
                   className="
                     font-['Playfair_Display'] font-semibold leading-[0.9]
-                    text-[100px] tracking-[-0.08em]
+                    text-[100px]
                   "
                 >
                   Story

@@ -6,6 +6,7 @@ const HeroContact: React.FC = () => {
     <div className="w-full bg-black">
       {/* Main Canvas */}
       <div className="grid min-h-screen grid-cols-1 md:grid-cols-2 text-white">
+
         {/* LEFT SECTION */}
         <div className="flex flex-col justify-between px-6 py-16 sm:px-10 lg:px-20">
           {/* TEXT SECTION */}
@@ -18,7 +19,7 @@ const HeroContact: React.FC = () => {
               Conversation
             </h1>
 
-            <p className="font-['Inter'] text-[14px] sm:text-[16px] font-normal text-[#E5E5E5] mt-8 max-w-[514px]">
+            <p className="font-Inter text-[14px] sm:text-[16px] font-normal text-[#E5E5E5] mt-8 max-w-[514px]">
               We&apos;re here to bring your fragrance dreams to life. Reach out
               and discover the essence of luxury with Beek.
             </p>
@@ -63,22 +64,44 @@ const HeroContact: React.FC = () => {
         </div>
 
         {/* RIGHT SECTION */}
-        <div className="relative w-full h-[320px] md:h-auto">
-          {/* FULL IMAGE - ALWAYS COVERS RIGHT HALF */}
+        <div className="relative w-full min-h-[400px] md:min-h-full">
+
+          {/* IMAGE */}
           <img
             src={heroImage}
-            alt="Fragrance bottle on sand"
+            alt="Perfume bottle"
             className="absolute inset-0 w-full h-full object-cover"
           />
 
           {/* WHITE CONTACT CARD */}
-          <div className="absolute bottom-6 right-1/2 translate-x-1/2 md:translate-x-0 md:right-10 md:bottom-10 w-[90%] max-w-[480px] bg-white rounded-[16px] shadow-lg flex flex-col sm:flex-row px-6 sm:px-10 py-6 gap-6 sm:gap-12">
+          <div
+  className="
+    absolute
+    bottom-6
+    left-1/2
+    -translate-x-1/2
+    md:left-auto
+    md:right-10
+    md:translate-x-0
+    bg-white
+    w-[90%]
+    max-w-[520px]
+    shadow-xl
+    px-8
+    py-6
+    flex
+    flex-col
+    sm:flex-row
+    gap-6
+  "
+>
+
             {/* LOCATION */}
             <div className="flex-1">
-              <p className="font-['Inter'] text-[11px] sm:text-[12px] tracking-wide text-gray-500 mb-2 uppercase">
+              <p className="font-['Inter'] text-[11px] tracking-wide text-gray-500 uppercase mb-2">
                 Location
               </p>
-              <p className="font-['Inter'] text-[15px] sm:text-[16px] text-black leading-relaxed">
+              <p className="font-['Inter'] text-[15px] text-black leading-[1.4]">
                 BK Tower, Oud Metha
                 <br />
                 Dubai, UAE
@@ -87,16 +110,17 @@ const HeroContact: React.FC = () => {
 
             {/* CONTACT */}
             <div className="flex-1">
-              <p className="font-['Inter'] text-[11px] sm:text-[12px] tracking-wide text-gray-500 mb-2 uppercase">
+              <p className="font-['Inter'] text-[11px] tracking-wide text-gray-500 uppercase mb-2">
                 Contact
               </p>
-              <p className="font-['Inter'] text-[15px] sm:text-[16px] text-black leading-relaxed break-all">
+              <p className="font-['Inter'] text-[15px] text-black leading-[1.4] break-all">
                 info@beekfragrances.com
                 <br />
                 +971 4 XXX XXXX
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </div>

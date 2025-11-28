@@ -30,7 +30,7 @@ const ContactForm: React.FC = () => {
           {/* Name + Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Name */}
-            <div className="h-[72px] bg-[#F9FAFB] rounded-[16px] border border-[#E5E7EB] flex items-center px-5">
+            <div className="h-[72px] bg-[#F9FAFB] border border-[#E5E7EB] flex items-center px-5">
               <User className="w-5 h-5 text-[#9CA3AF] mr-3" />
               <input
                 type="text"
