@@ -102,7 +102,7 @@ const Testimonials = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
-                      className="text-2xl md:text-4xl lg:text-5xl font-semi-bold text-white leading-tight mb-8"
+                      className="text-[36px] font-semibold text-white leading-tight mb-8"
                       style={{
                         textShadow: "0 8px 24px rgba(0,0,0,0.5)",
                         fontFamily: "'Playfair Display'",

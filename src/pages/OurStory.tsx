@@ -107,12 +107,11 @@ const OurStory: React.FC = () => {
                 lg:px-20 lg:py-16
               "
             >
-              <div className="max-w-[520px] mx-auto md:mx-0 text-center md:text-left">
-                <h2 className="mb-5 font-['Playfair_Display'] text-[40px] font-semibold">
+              <div className="max-w-[520px] text-center">
+                <h2 className="mb-4 font-['Playfair_Display'] text-[40px] font-semibold text-center">
                   A Heritage of Excellence
                 </h2>
-                <p className="font-['Inter'] text-[16px] leading-[1.8] text-[#444444] text-justify">
-                  Beek is built on traditions that transcend time. Our story is
+<p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">                  Beek is built on traditions that transcend time. Our story is
                   guided by the enduring elegance of classic perfumery,
                   reimagined with a modern sensibility. Each creation pays
                   homage to the meticulous craft passed down through
@@ -157,12 +156,11 @@ const OurStory: React.FC = () => {
                 lg:px-20 lg:py-16
               "
             >
-              <div className="max-w-[520px] mx-auto md:mx-0 text-center md:text-left">
-                <h2 className="mb-5 font-['Playfair_Display'] text-[40px] font-semibold">
+              <div className="max-w-[520px] text-center">
+                <h2 className="mb-4 font-['Playfair_Display'] text-[40px] font-semibold text-center">
                   Craftsmanship as an Artform
                 </h2>
-                <p className="font-['Inter'] text-[16px] leading-[1.8] text-[#444444] text-justify">
-                  To us, crafting a fragrance is an intimate expression of
+<p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">                  To us, crafting a fragrance is an intimate expression of
                   mastery. Our perfumers work like sculptors of scent —
                   selecting, layering, and perfecting every note with
                   exceptional care. From rare florals to deep resins, every
