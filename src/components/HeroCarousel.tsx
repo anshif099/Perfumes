@@ -98,7 +98,7 @@ const HeroCarousel = () => {
                     mb-4 sm:mb-6
                     ${slides[currentSlide].textColor} drop-shadow-2xl
                     font-['Playfair_Display']
-                    font-semibold
+                    font-semibold  
                     leading-tight
                     text-[32px] sm:text-[44px] lg:text-[60px]
                     whitespace-pre-line
