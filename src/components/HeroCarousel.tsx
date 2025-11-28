@@ -9,21 +9,21 @@ const slides = [
   {
     image: hero1,
     title: "Where Elegance \nBreathes in Every Note",
-    description: "For those who love the art of fine perfume.",
+    description: "Each layer unfolds with grace, creating a scent as unique as you.",
     textColor: "text-white",
     position: "right", // text block on right side, but text INSIDE is left-aligned
   },
   {
     image: hero2,
-    title: "A Fragrance\nMade To Mark",
-    description: "Its balanced composition enhances your individuality.",
+    title: "A scent that lingers with \n elegance.",
+    description: "Created for those who appreciate the art of fine perfume, every layer unfolds with intention and emotion.",
     textColor: "text-white",
     position: "left",
   },
   {
     image: hero3,
-    title: "Elegance Breathes\nIn Every Note",
-    description: "A scent as unique as you.",
+    title: "A fragrance made \n to leave a mark.",
+    description: "Its balanced composition enhances your individuality, making every moment feel effortlessly elegant.",
     textColor: "text-white",
     position: "left",
   },
@@ -77,7 +77,7 @@ const HeroCarousel = () => {
             <div
               className={`
                 absolute inset-y-6 sm:inset-y-10 lg:inset-y-16
-                inset-x-4 sm:inset-x-10 lg:inset-x-20
+                inset-x-4 sm:inset-x-10 lg:inset-x-52
                 flex items-center
                 ${isRight ? "justify-end" : "justify-start"}
               `}

@@ -104,14 +104,15 @@ const OurStory: React.FC = () => {
                 flex flex-col justify-center
                 bg-white px-6 pt-8 pb-12
                 md:px-12 md:py-12
-                lg:px-20 lg:py-16
+                lg:px-20 lg:py-16 items-center
               "
             >
               <div className="max-w-[520px] text-center">
                 <h2 className="mb-4 font-['Playfair_Display'] text-[40px] font-semibold text-center">
                   A Heritage of Excellence
                 </h2>
-<p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">                  Beek is built on traditions that transcend time. Our story is
+<p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
+                Beek is built on traditions that transcend time. Our story is
                   guided by the enduring elegance of classic perfumery,
                   reimagined with a modern sensibility. Each creation pays
                   homage to the meticulous craft passed down through
@@ -153,7 +154,7 @@ const OurStory: React.FC = () => {
                 flex flex-col justify-center
                 bg-white px-6 pt-8 pb-0
                 md:px-12 md:py-12
-                lg:px-20 lg:py-16
+                lg:px-20 lg:py-16 items-center
               "
             >
               <div className="max-w-[520px] text-center">
