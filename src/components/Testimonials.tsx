@@ -58,7 +58,7 @@ const Testimonials = () => {
     <section className="w-full bg-black py-0">
       {/* full width, no container / no max-w */}
       <div className="w-full">
-        <div className="relative h-[420px] md:h-[520px] overflow-hidden rounded-none">
+        <div className="relative h-[420px] md:h-[634px] overflow-hidden rounded-none">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}

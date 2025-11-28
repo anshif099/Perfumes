@@ -21,13 +21,21 @@ const Packaging = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="
-              bg-white rounded-sm shadow-lg
-              text-center
-              flex flex-col items-center justify-center
-              w-full max-w-[660px]
-              mx-auto
-              px-6 py-10 md:px-10 md:py-12 lg:px-14 lg:py-14
-            "
+  bg-white rounded-sm shadow-lg
+  text-center
+  flex flex-col items-center justify-center
+
+  /* MOBILE (responsive) */
+  w-full max-w-[659px]
+  min-h-[561px]
+  mx-auto px-6 py-8
+
+  /* DESKTOP (exact size) */
+  lg:w-[659px]
+  lg:h-[561px]
+  lg:px-14
+"
+
           >
             <h2
               className="
@@ -78,7 +86,7 @@ const Packaging = () => {
   className="
     w-full
     lg:w-[734px]
-    lg:h-[561px]
+    lg:h-[800px]
     mx-auto
     overflow-hidden
   "

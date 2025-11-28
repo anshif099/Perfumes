@@ -57,14 +57,12 @@ const Shop: React.FC = () => {
         <div className="relative z-10 mx-auto flex w-full max-w-6xl px-6 md:px-8">
           <div className="max-w-xl">
             {/* Luxury Fragrances badge */}
-            <div className="inline-block border border-[#d9a93b] px-6 py-2 text-xs font-semibold tracking-wide text-[#d9a93b] font-Inter">
+            <div className="inline-block border border-[#d9a93b] px-6 py-2 text-xs font-semibold tracking-wide text-[#ffff] font-Inter bg-[#d9a93b]/20">
               Luxury Fragrances
             </div>
 
-            <h1 className="mt-5 font-['Playfair_Display'] text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl">
-              Timeless Scents,
-              <br />
-              Capturing Moments
+<h1 className="mt-5 font-['Playfair_Display'] text-[36px] md:text-[48px] lg:text-[64px] leading-tight tracking-tight font-bold">
+              Our Collections
             </h1>
 
             <p className="mt-4 max-w-lg font-Inter text-base leading-relaxed text-white/90 md:text-lg">
