@@ -41,7 +41,7 @@ const ContactForm: React.FC = () => {
             </div>
 
             {/* Email */}
-            <div className="h-[72px] bg-[#F9FAFB] rounded-[16px] border border-[#E5E7EB] flex items-center px-5">
+            <div className="h-[72px] bg-[#F9FAFB] border border-[#E5E7EB] flex items-center px-5">
               <Mail className="w-5 h-5 text-[#9CA3AF] mr-3" />
               <input
                 type="email"
@@ -53,7 +53,7 @@ const ContactForm: React.FC = () => {
           </div>
 
           {/* Phone */}
-          <div className="h-[72px] bg-[#F9FAFB] rounded-[16px] border border-[#E5E7EB] flex items-center px-5">
+          <div className="h-[72px] bg-[#F9FAFB] border border-[#E5E7EB] flex items-center px-5">
             <Phone className="w-5 h-5 text-[#9CA3AF] mr-3" />
             <input
               type="tel"
@@ -63,7 +63,7 @@ const ContactForm: React.FC = () => {
           </div>
 
           {/* Message */}
-          <div className="bg-[#F9FAFB] rounded-[16px] border border-[#E5E7EB] flex items-start px-5 py-4 min-h-[190px]">
+          <div className="bg-[#F9FAFB] border border-[#E5E7EB] flex items-start px-5 py-4 min-h-[190px]">
             <MessageCircle className="w-5 h-5 text-[#9CA3AF] mr-3 mt-1" />
             <textarea
               placeholder="Tell us about your inquiry..."
