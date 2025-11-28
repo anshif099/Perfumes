@@ -180,7 +180,7 @@ const ProductCard = ({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-[480px] flex-shrink-0 bg-white"
+      className="relative w-full sm:w-[480px] flex-shrink-0 bg-white"
     >
       <div className="relative h-[652px] overflow-hidden">
         <div
