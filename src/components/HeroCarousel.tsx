@@ -113,7 +113,7 @@ const HeroCarousel = () => {
                   transition={{ delay: 0.5, duration: 0.8 }}
                   className={`
                     ${slides[currentSlide].textColor}
-                    font-['Inter'] font-normal opacity-95
+                    font-Inter font-normal opacity-95
                     text-[14px] sm:text-[16px]
                     max-w-md sm:max-w-lg lg:max-w-xl
                   `}
