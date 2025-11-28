@@ -47,7 +47,7 @@ const HeroCarousel = () => {
     <section
       className="
         relative w-full
-        min-h-[520px] sm:min-h-[600px] lg:min-h-[720px] xl:min-h-[900px] xxl:min-h-[1200px]
+        min-h-[520px] sm:min-h-[600px] lg:min-h-[720px] xl:min-h-[100vh] xxl:min-h-[100vh]
         overflow-hidden bg-black
       "
     >
