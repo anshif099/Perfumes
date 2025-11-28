@@ -31,7 +31,13 @@ const Newsletter = () => {
           }}
         >
           {/* Desktop frame size 1440 x 855 */}
-          <div className="w-full max-w-[1440px] mx-auto md:h-[855px] md:min-h-[855px]">
+          <div
+            className="
+              w-full max-w-[1440px] mx-auto
+              min-h-screen flex items-center justify-center
+              md:h-[855px] md:min-h-[855px] md:block
+            "
+          >
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -39,9 +45,12 @@ const Newsletter = () => {
               className="
                 bg-gold shadow-2xl box-border text-center
                 px-8 py-6 w-[90%] max-w-[360px] mx-auto
-                md:px-16 md:py-10 md:w-[596px] md:max-w-none
-                md:absolute md:right-40 md:top-1/2 md:-translate-y-1/2
                 flex flex-col items-center
+
+                /* DESKTOP: original position */
+                md:px-16 md:py-10
+                md:w-[596px] md:max-w-none
+                md:absolute md:right-40 md:top-1/2 md:-translate-y-1/2
               "
             >
               {/* H3: Playfair Bold 36px */}
@@ -50,7 +59,7 @@ const Newsletter = () => {
                   font-playfair font-bold
                   text-[28px] md:text-[36px]
                   leading-[1.3]
-                  text-dark mb-1
+                  text-dark mb-3
                   max-w-[443px]
                   mx-auto text-center
                 "
@@ -58,20 +67,22 @@ const Newsletter = () => {
                 Subscribe Our Newsletter
               </h3>
 
-              {/* Paragraph: Inter Regular 16px */}
+              {/* Paragraph */}
               <p
                 className="
                   font-inter
-                  text-[16px] md:text-[16px]
-                  leading-[1.2]
+                  text-[16px]
+                  leading-[1.4]
                   text-dark/90 mb-8
                   max-w-[281px]
                   mx-auto text-center
                 "
               >
-                Get the latest news about Perfume tips and new products.
+                Be the first to know about exclusive offers,
+                new arrivals, and fragrance tips delivered
+                straight to your inbox.
               </p>
-<br></br><br></br>
+
               <form
                 onSubmit={handleSubmit}
                 className="w-full text-center flex flex-col items-center"
@@ -85,13 +96,14 @@ const Newsletter = () => {
                   className="
                     w-full max-w-[516px]
                     bg-transparent border border-dark text-dark
-                    [&::placeholder]:text-[20px]
+                    [&::placeholder]:text-[16px]
                     [&::placeholder]:text-dark
-                    px-4 py-6 text-sm mb-10
+                    px-4 py-4 text-sm mb-6
                     rounded-none
                   "
                 />
 
+                {/* SUBSCRIBE BUTTON – unchanged style */}
                 <div className="flex flex-col items-center">
                   <Button
                     type="submit"
@@ -128,16 +140,16 @@ const Newsletter = () => {
                 <p
                   className="
                     font-inter
-                    text-[14px] md:text-[14px]
-                    leading-[1.2]
+                    text-[12px] md:text-[13px]
+                    leading-[1.4]
                     text-dark/90 mb-0
                     max-w-[281px]
-                    mx-auto text-center mt-6
+                    mx-auto text-center mt-4
                   "
                 >
-                  No Spam, only quality articles to help you be more radiant. You
-                  can opt out anytime.
-                </p><br></br><br></br>
+                  *By submitting, I agree to receive marketing emails
+                  and understand I can unsubscribe anytime.
+                </p>
               </form>
             </motion.div>
           </div>
