@@ -50,8 +50,8 @@ relative w-full
 min-h-screen
 sm:min-h-[600px]
 lg:min-h-[720px]
-xl:min-h-[900px]
-2xl:min-h-[1200px]
+xl:min-h-[850px]
+2xl:min-h-[1000px]
 overflow-visible
 bg-black
 "
