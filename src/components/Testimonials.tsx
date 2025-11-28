@@ -55,10 +55,11 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="w-full bg-black py-0">
-      {/* full width, no container / no max-w */}
+    // Use w-screen so it ignores parent max-width and truly spans full viewport width
+    <section className="w-screen bg-black py-0 overflow-hidden">
       <div className="w-full">
-        <div className="relative h-[420px] md:h-[634px] overflow-hidden rounded-none">
+        {/* Height responsive for all screens */}
+        <div className="relative h-[380px] sm:h-[460px] md:h-[550px] lg:h-[634px] overflow-hidden rounded-none">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -69,26 +70,28 @@ const Testimonials = () => {
               className="absolute inset-0"
             >
               <div
-                className="w-full h-full bg-cover bg-center relative"
+                className="w-full h-full bg-cover bg-center bg-no-repeat relative"
                 style={{
                   backgroundImage: `url(${testimonials[currentSlide].image})`,
                 }}
               >
+                {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black/40" />
 
-                <div className="absolute inset-0 flex items-center justify-center px-6 md:px-20">
+                {/* Content */}
+                <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 md:px-20">
                   <div className="text-center max-w-4xl">
                     {/* Stars */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
-                      className="flex justify-center gap-2 mb-6"
+                      className="flex justify-center gap-2 mb-4 sm:mb-6"
                     >
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-5 h-5 md:w-6 md:h-6 ${
+                          className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ${
                             i < testimonials[currentSlide].rating
                               ? "fill-yellow-400 text-yellow-400"
                               : "fill-none text-yellow-400"
@@ -102,7 +105,7 @@ const Testimonials = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
-                      className="text-[36px] font-semibold text-white leading-tight mb-8"
+                      className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] font-semibold text-white leading-tight mb-4 sm:mb-6"
                       style={{
                         textShadow: "0 8px 24px rgba(0,0,0,0.5)",
                         fontFamily: "'Playfair Display'",
@@ -118,10 +121,10 @@ const Testimonials = () => {
                       transition={{ delay: 0.7 }}
                       style={{ fontFamily: "'Inter'" }}
                     >
-                      <p className="text-lg md:text-xl font-bold text-white tracking-wider mb-2">
+                      <p className="text-base sm:text-lg md:text-xl font-bold text-white tracking-wider mb-1 sm:mb-2">
                         {testimonials[currentSlide].author}
                       </p>
-                      <p className="text-sm md:text-base text-white/90">
+                      <p className="text-xs sm:text-sm md:text-base text-white/90">
                         {testimonials[currentSlide].country}
                       </p>
                     </motion.div>
@@ -136,22 +139,22 @@ const Testimonials = () => {
             variant="ghost"
             size="icon"
             onClick={goToPrevious}
-            className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-14 h-14 md:w-18 md:h-18 rounded-full bg-black/40 hover:bg-black/60 text-white z-10"
+            className="absolute left-3 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-black/40 hover:bg-black/60 text-white z-10"
           >
-            <ChevronLeft className="w-7 h-7" />
+            <ChevronLeft className="w-6 h-6" />
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
             onClick={goToNext}
-            className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-14 h-14 md:w-18 md:h-18 rounded-full bg-black/40 hover:bg-black/60 text-white z-10"
+            className="absolute right-3 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-black/40 hover:bg-black/60 text-white z-10"
           >
-            <ChevronRight className="w-7 h-7" />
+            <ChevronRight className="w-6 h-6" />
           </Button>
 
           {/* Dots */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {testimonials.map((_, index) => (
               <button
                 key={index}
