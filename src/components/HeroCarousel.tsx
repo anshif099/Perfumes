@@ -46,10 +46,15 @@ const HeroCarousel = () => {
   return (
     <section
       className="
-        relative w-full
-        min-h-[520px] sm:min-h-[600px] lg:min-h-[720px] xl:min-h-[100vh] xxl:min-h-[100vh]
-        overflow-hidden bg-black
-      "
+relative w-full
+min-h-screen
+sm:min-h-[600px]
+lg:min-h-[720px]
+xl:min-h-[900px]
+2xl:min-h-[1200px]
+overflow-visible
+bg-black
+"
     >
       <AnimatePresence mode="wait">
         <motion.div
