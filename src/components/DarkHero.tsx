@@ -11,31 +11,34 @@ const DarkHero = () => {
   return (
     <section
       ref={ref}
-      className="relative w-full flex items-center justify-center bg-no-repeat"
+      className="
+        relative w-full
+        flex items-center justify-center
+        bg-no-repeat bg-center bg-cover
+        min-h-[480px] sm:min-h-[560px] md:min-h-[640px] lg:min-h-[720px] xl:min-h-[820px]
+        py-16 sm:py-20 lg:py-24
+      "
       style={{
         backgroundImage: `url(${darkHeroImage})`,
-        backgroundSize: "1440px 1074px",
-        minHeight: "1074px",
-        backgroundPosition: "center",
       }}
     >
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/50" />
 
+      {/* Content */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
-        className="relative z-10 text-center px-6"
-        style={{ width: "787px" }}
+        className="relative z-10 text-center px-4 sm:px-6"
       >
         <h2
-          className="text-white leading-tight mb-8 mx-auto"
-          style={{
-            fontFamily: "'Playfair Display'",
-            fontSize: "36px",
-            height: "96px",
-            width: "787px",
-          }}
+          className="
+            text-white leading-tight mb-8 mx-auto
+            font-['Playfair_Display']
+            text-2xl sm:text-3xl md:text-4xl lg:text-[36px]
+            max-w-[760px]
+          "
         >
           Our rich fragrance collections ensure you make
           <br className="hidden md:block" />
@@ -44,7 +47,11 @@ const DarkHero = () => {
 
         <Button
           size="lg"
-          className="bg-gold hover:bg-gold-dark text-white px-12 shadow-2xl"
+          className="
+            bg-gold hover:bg-gold-dark text-white
+            px-10 sm:px-12
+            shadow-2xl
+          "
         >
           Shop Now
         </Button>

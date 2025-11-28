@@ -8,15 +8,15 @@ import hero3 from "@/assets/hero3.jpg";
 const slides = [
   {
     image: hero1,
-    title: "A Fragrance\nMade To Mark",
-    description: "Its balanced composition enhances your individuality.",
+    title: "Where Elegance \nBreathes in Every Note",
+    description: "For those who love the art of fine perfume.",
     textColor: "text-white",
-    position: "right",
+    position: "right", // text block on right side, but text INSIDE is left-aligned
   },
   {
     image: hero2,
-    title: "A Scent That\nLingers Elegantly",
-    description: "For those who love the art of fine perfume.",
+    title: "A Fragrance\nMade To Mark",
+    description: "Its balanced composition enhances your individuality.",
     textColor: "text-white",
     position: "left",
   },
@@ -41,11 +41,13 @@ const HeroCarousel = () => {
 
   const goToSlide = (index: number) => setCurrentSlide(index);
 
+  const isRight = slides[currentSlide].position === "right";
+
   return (
     <section
       className="
         relative w-full
-        min-h-[520px] sm:min-h-[650px] lg:min-h-[850px]
+        min-h-[520px] sm:min-h-[600px] lg:min-h-[720px] xl:min-h-[850px]
         overflow-hidden bg-black
       "
     >
@@ -58,40 +60,33 @@ const HeroCarousel = () => {
           transition={{ duration: 1 }}
           className="absolute inset-0"
         >
-         <div
-  className="
-    w-full h-full
-    bg-center bg-cover
-    relative
-  "
-  style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
->
-
-            {/* Dark overlay */}
+          {/* Background image fully covering section */}
+          <div
+            className="
+              w-full h-full
+              bg-center bg-cover
+              relative
+            "
+            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+          >
+            {/* Dark overlay for readability */}
             <div className="absolute inset-0 bg-black/30" />
 
             {/* CONTENT */}
             <div
               className={`
-                absolute inset-x-4 sm:inset-x-10 lg:inset-x-20
-                top-1/2 -translate-y-1/2
-                flex
-                ${
-                  slides[currentSlide].position === "right"
-                    ? "justify-end"
-                    : "justify-start"
-                }
+                absolute inset-y-6 sm:inset-y-10 lg:inset-y-16
+                inset-x-4 sm:inset-x-10 lg:inset-x-20
+                flex items-center
+                ${isRight ? "justify-end" : "justify-start"}
               `}
             >
               <div
-                className={`
+                className="
                   max-w-full sm:max-w-xl lg:max-w-2xl
-                  ${
-                    slides[currentSlide].position === "right"
-                      ? "text-right"
-                      : "text-left"
-                  }
-                `}
+                  text-left
+                  flex flex-col items-start
+                "
               >
                 {/* TITLE */}
                 <motion.h1
@@ -104,7 +99,7 @@ const HeroCarousel = () => {
                     font-['Playfair_Display']
                     font-semibold
                     leading-tight
-                    text-[36px] sm:text-[48px] lg:text-[64px]
+                    text-[32px] sm:text-[44px] lg:text-[60px]
                     whitespace-pre-line
                   `}
                 >
@@ -119,7 +114,7 @@ const HeroCarousel = () => {
                   className={`
                     ${slides[currentSlide].textColor}
                     font-['Inter'] font-normal opacity-95
-                    text-[16px]
+                    text-[14px] sm:text-[16px]
                     max-w-md sm:max-w-lg lg:max-w-xl
                   `}
                 >
@@ -131,18 +126,14 @@ const HeroCarousel = () => {
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
-                  className={`mt-6 sm:mt-8 ${
-                    slides[currentSlide].position === "right"
-                      ? "flex justify-end"
-                      : "flex justify-start"
-                  }`}
+                  className="mt-6 sm:mt-8 flex justify-start"
                 >
                   <Button
                     size="lg"
                     className={`
-                      w-[290px] h-[54px]
+                      w-full sm:w-[240px] lg:w-[290px] h-[50px] lg:h-[54px]
                       font-['Inter'] font-normal
-                      text-[18px] sm:text-[20px] leading-[24px]
+                      text-[16px] sm:text-[18px] lg:text-[20px] leading-[24px]
                       ${
                         slides[currentSlide].textColor === "text-white"
                           ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black"
