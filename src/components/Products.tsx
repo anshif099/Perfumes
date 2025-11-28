@@ -132,27 +132,44 @@ const Products = () => {
       <div className="h-8 bg-white" />
 
       {/* Slider */}
-      <div
-        ref={sliderRef}
-        className="w-full overflow-hidden cursor-grab select-none"
-        onMouseDown={handleMouseDown}
-        onMouseLeave={endDrag}
-        onMouseUp={endDrag}
-        onMouseMove={handleMouseMove}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onWheel={(e) => e.preventDefault()}
-      >
-        <div className="flex">
-          {products.map((product, index) => (
-            <ProductCard
-              key={product.title + index}
-              product={product}
-              index={index}
-              isInView={isInView}
-            />
-          ))}
+      <div className="w-full">
+        <div className="hidden sm:block">
+          <div
+            ref={sliderRef}
+            className="w-full overflow-hidden cursor-grab select-none"
+            onMouseDown={handleMouseDown}
+            onMouseLeave={endDrag}
+            onMouseUp={endDrag}
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onWheel={(e) => e.preventDefault()}
+          >
+            <div className="flex">
+              {products.map((product, index) => (
+                <ProductCard
+                  key={product.title + index}
+                  product={product}
+                  index={index}
+                  isInView={isInView}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="sm:hidden">
+          <div className="grid grid-cols-1 gap-8 px-4">
+            {products.map((product, index) => (
+              <ProductCard
+                key={product.title + index}
+                product={product}
+                index={index}
+                isInView={isInView}
+                isMobile={true}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -166,10 +183,12 @@ const ProductCard = ({
   product,
   index,
   isInView,
+  isMobile = false,
 }: {
   product: (typeof products)[0];
   index: number;
   isInView: boolean;
+  isMobile?: boolean;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -182,7 +201,7 @@ const ProductCard = ({
       onMouseLeave={() => setIsHovered(false)}
       className="relative w-full sm:w-[480px] flex-shrink-0 bg-white"
     >
-      <div className="relative h-[652px] overflow-hidden">
+      <div className={`relative ${isMobile ? 'h-[400px]' : 'h-[652px]'} overflow-hidden`}>
         <div
           className="w-full h-full bg-cover bg-center"
           style={{ backgroundImage: `url(${product.image})` }}
