@@ -22,19 +22,21 @@ const OurStory: React.FC = () => {
               className="
                 col-span-1
                 flex min-h-[50vh] items-center justify-center
-                bg-white px-6 pt-0 pb-8
+                bg-white px-4 pt-4 pb-8
+                sm:px-6
                 md:min-h-0 md:px-12 md:py-12
                 lg:px-20 lg:py-16
               "
             >
               <div className="max-w-[520px] text-left">
-                <div className="font-['Playfair_Display'] text-[48px] font-semibold text-[#d9a93b] leading-none mb-1">
+                {/* Smaller on mobile, scale up on larger screens */}
+                <div className="font-['Playfair_Display'] text-[28px] sm:text-[36px] md:text-[48px] font-semibold text-[#d9a93b] leading-none mb-1">
                   Our
                 </div>
                 <h1
                   className="
                     font-['Playfair_Display'] font-semibold leading-[0.9]
-                    text-[100px]
+                    text-[42px] sm:text-[60px] md:text-[80px] lg:text-[100px]
                   "
                 >
                   Story
@@ -65,16 +67,16 @@ const OurStory: React.FC = () => {
               className="
                 col-span-2 md:col-span-1
                 flex min-h-[50vh] items-center justify-center
-                bg-white px-6 pt-0 pb-8
+                bg-white px-6 pt-4 pb-8
                 md:min-h-0 md:px-12 md:py-12
                 lg:px-20 lg:py-16
               "
             >
               <div className="max-w-[520px] text-center">
-                <h2 className="mb-4 font-['Playfair_Display'] text-[40px] font-semibold">
+                <h2 className="mb-4 font-['Playfair_Display'] text-[32px] sm:text-[36px] md:text-[40px] font-semibold">
                   About Us
                 </h2>
-                <p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
+                <p className="font-['Inter'] text-[14px] sm:text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
                   At Beek, luxury isn’t merely an ambition — it is the very
                   foundation on which our brand is built. Every fragrance we
                   craft carries the essence of timeless refinement, shaped
@@ -120,10 +122,10 @@ const OurStory: React.FC = () => {
               "
             >
               <div className="max-w-[520px] text-center">
-                <h2 className="mb-4 font-['Playfair_Display'] text-[40px] font-semibold text-center">
+                <h2 className="mb-4 font-['Playfair_Display'] text-[32px] sm:text-[36px] md:text-[40px] font-semibold text-center">
                   A Heritage of Excellence
                 </h2>
-                <p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
+                <p className="font-['Inter'] text-[14px] sm:text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
                   Beek is built on traditions that transcend time. Our story is
                   guided by the enduring elegance of classic perfumery,
                   reimagined with a modern sensibility. Each creation pays
@@ -155,16 +157,16 @@ const OurStory: React.FC = () => {
             <div
               className="
                 flex flex-col justify-center
-                bg-white px-6 pt-8 pb-0
+                bg-white px-6 pt-8 pb-10
                 md:px-12 md:py-12
                 lg:px-20 lg:py-16 items-center
               "
             >
               <div className="max-w-[520px] text-center">
-                <h2 className="mb-4 font-['Playfair_Display'] text-[40px] font-semibold text-center">
+                <h2 className="mb-4 font-['Playfair_Display'] text-[32px] sm:text-[36px] md:text-[40px] font-semibold text-center">
                   Craftsmanship as an Artform
                 </h2>
-                <p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
+                <p className="font-['Inter'] text-[14px] sm:text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
                   To us, crafting a fragrance is an intimate expression of
                   mastery. Our perfumers work like sculptors of scent —
                   selecting, layering, and perfecting every note with
