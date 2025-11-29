@@ -21,8 +21,22 @@ const Shop: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const navigate = useNavigate();
 
+  const handleExploreCollection = () => {
+    // Scroll to the products section
+    const productsSection = document.querySelector('main');
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleViewBestSellers = () => {
+    // Filter to show only best sellers (products with ribbon "Best Seller")
+    setActiveFilter("Best Seller");
+  };
+
   const filteredProducts = useMemo(() => {
     if (activeFilter === "All") return PRODUCTS;
+    if (activeFilter === "Best Seller") return PRODUCTS.filter(p => p.ribbon === "Best Seller");
     return PRODUCTS.filter(p => p.tags.includes(activeFilter));
   }, [activeFilter]);
 
@@ -65,10 +79,10 @@ const Shop: React.FC = () => {
             </p>
 
             <div className="mt-8 flex gap-4">
-              <button className="bg-[#d9a93b] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#c8892f] rounded-none">
+              <button onClick={handleExploreCollection} className="bg-[#d9a93b] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#c8892f] rounded-none">
                 Explore Collection
               </button>
-              <button className="border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 rounded-none">
+              <button onClick={handleViewBestSellers} className="border border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 rounded-none">
                 View Best Sellers
               </button>
             </div>

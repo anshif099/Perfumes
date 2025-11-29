@@ -1,5 +1,6 @@
 import React from "react";
 import heroImage from "@/assets/contact-hero.jpg";
+import { Link } from "react-router-dom";
 
 const HeroContact: React.FC = () => {
   return (
@@ -23,13 +24,14 @@ const HeroContact: React.FC = () => {
               We&apos;re here to bring your fragrance dreams to life. Reach out
               and discover the essence of luxury with Beek.
             </p>
-
+            <Link to="/Shop">
             <button className="mt-10 w-[220px] sm:w-[245px] h-[52px] sm:h-[56px] bg-[#E1B159] hover:bg-[#f0c465] flex items-center justify-center gap-2 transition">
               <span className="font-['Inter'] font-semibold text-[15px] sm:text-[16px] text-black">
                 Explore Collections
               </span>
               <span className="text-black text-xl">→</span>
             </button>
+            </Link>
           </div>
 
           {/* STATS SECTION */}

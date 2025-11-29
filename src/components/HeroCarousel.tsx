@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import hero1 from "@/assets/hero1.jpg";
 import hero2 from "@/assets/hero2.jpg";
 import hero3 from "@/assets/hero3.jpg";
@@ -129,22 +130,24 @@ const HeroCarousel = () => {
                   transition={{ delay: 0.7, duration: 0.8 }}
                   className="mt-6 sm:mt-8 flex justify-start"
                 >
-                  <Button
-                    size="lg"
-                    className={`
-                      w-full sm:w-[240px] lg:w-[290px] h-[50px] lg:h-[54px]
-                      font-['Inter'] font-normal
-                      text-[16px] sm:text-[18px] lg:text-[20px] leading-[24px]
-                      ${
-                        slides[currentSlide].textColor === "text-white"
-                          ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black"
-                          : "bg-transparent border-2 border-black text-black hover:bg-black hover:text-white"
-                      }
-                      transition-all duration-300
-                    `}
-                  >
-                    Shop Now
-                  </Button>
+                  <Link to="/Shop">
+                    <Button
+                      size="lg"
+                      className={`
+                        w-full sm:w-[240px] lg:w-[290px] h-[50px] lg:h-[54px]
+                        font-['Inter'] font-normal
+                        text-[16px] sm:text-[18px] lg:text-[20px] leading-[24px]
+                        ${
+                          slides[currentSlide].textColor === "text-white"
+                            ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black"
+                            : "bg-transparent border-2 border-black text-black hover:bg-black hover:text-white"
+                        }
+                        transition-all duration-300
+                      `}
+                    >
+                      Shop Now
+                    </Button>
+                  </Link>
                 </motion.div>
               </div>
             </div>

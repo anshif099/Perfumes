@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import darkHeroImage from "@/assets/dark-hero.jpg";
+import { Link } from "react-router-dom";
 
 const DarkHero = () => {
   const ref = useRef(null);
@@ -44,7 +45,7 @@ const DarkHero = () => {
           <br className="hidden md:block" />
           a memorable and distinctive impact.
         </h2>
-
+        <Link to="/Shop">
         <Button
           size="lg"
           className="
@@ -55,6 +56,7 @@ const DarkHero = () => {
         >
           Shop Now
         </Button>
+        </Link>
       </motion.div>
     </section>
   );

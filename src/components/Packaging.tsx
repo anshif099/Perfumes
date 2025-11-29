@@ -3,6 +3,8 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import packagingImage from "@/assets/packaging.jpg";
+import { Link } from "react-router-dom";
+
 
 const Packaging = () => {
   const ref = useRef(null);
@@ -66,13 +68,14 @@ const Packaging = () => {
               crafted to elevate your fragrance experience from the very first
               glance.
             </p>
-
+             <Link to="/OurStory">
             <Button
               size="lg"
               className="bg-gold hover:bg-gold-dark text-white px-10 md:px-12"
             >
               Know More
             </Button>
+            </Link>
           </motion.div>
 
           {/* Right: Image */}
