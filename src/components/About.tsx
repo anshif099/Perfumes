@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import modelImage from "@/assets/model.jpg";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const ref = useRef(null);
@@ -61,8 +62,10 @@ const About = () => {
             </p>
 
             {/* BUTTON */}
+            <Link to="/Shop">
+           <button>
             <a
-              href="/OurStory"
+              
               className="
                 px-10 md:px-12 py-3
                 bg-gold hover:bg-gold-dark
@@ -74,6 +77,8 @@ const About = () => {
             >
               Know More
             </a>
+            </button>
+            </Link>
           </motion.div>
 
           {/* IMAGE */}
