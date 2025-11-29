@@ -1,10 +1,11 @@
 import logo from "@/assets/logo.png";
-import { MapPin, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer id="footer" className="w-full bg-black text-white/80">
       <div className="max-w-7xl mx-auto px-4 pt-10 pb-10">
+
         {/* Mobile logo (centered) */}
         <div className="flex justify-center mb-10 md:hidden">
           <img src={logo} alt="BEEK Perfumes" className="w-16 h-auto" />
@@ -12,34 +13,23 @@ const Footer = () => {
 
         {/* Top link columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 pb-10">
+
           {/* Quick Links */}
           <div>
             <h4 className="text-sm font-semibold mb-4 tracking-wide">
               Quick Links
             </h4>
             <nav className="flex flex-col gap-2 text-xs md:text-sm">
-              <a
-                href="#"
-                className="text-white/70 hover:text-gold transition-colors"
-              >
+              <a href="#" className="text-white/70 hover:text-gold transition-colors">
                 Home
               </a>
-              <a
-                href="#products"
-                className="text-white/70 hover:text-gold transition-colors"
-              >
+              <a href="#products" className="text-white/70 hover:text-gold transition-colors">
                 Collections
               </a>
-              <a
-                href="#about"
-                className="text-white/70 hover:text-gold transition-colors"
-              >
+              <a href="#about" className="text-white/70 hover:text-gold transition-colors">
                 Our Story
               </a>
-              <a
-                href="#footer"
-                className="text-white/70 hover:text-gold transition-colors"
-              >
+              <a href="#footer" className="text-white/70 hover:text-gold transition-colors">
                 Contact
               </a>
             </nav>
@@ -51,33 +41,48 @@ const Footer = () => {
               Follow Us
             </h4>
             <nav className="flex flex-col gap-2 text-xs md:text-sm">
-              <a
-                href="#"
-                className="text-white/70 hover:text-gold transition-colors"
-              >
+              <a href="#" className="text-white/70 hover:text-gold transition-colors">
                 Instagram
               </a>
-              <a
-                href="#"
-                className="text-white/70 hover:text-gold transition-colors"
-              >
+              <a href="#" className="text-white/70 hover:text-gold transition-colors">
                 Facebook
               </a>
             </nav>
           </div>
 
-          {/* Empty column for spacing on desktop */}
+          {/* Empty column for spacing */}
           <div className="hidden md:block" />
         </div>
 
-        {/* Brand + Address (DESKTOP) */}
+        {/* DESKTOP brand + address */}
         <div className="hidden md:block mb-8">
+
           <img src={logo} alt="BEEK Perfumes" className="w-16 h-auto mb-4" />
 
           <div className="text-xs leading-relaxed text-white/70 space-y-3">
-            {/* Address */}
-            <div className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+
+            {/* Location (CUSTOM ICON) */}
+            <div className="flex items-start gap-4">
+              <svg
+                width="18"
+                height="28"
+                viewBox="0 0 18 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="shrink-0 mt-[2px]"
+              >
+                <circle cx="9" cy="6" r="5" stroke="white" strokeWidth="1.5" />
+                <line
+                  x1="9"
+                  y1="11"
+                  x2="9"
+                  y2="26"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+
               <div>
                 <p>BK Tower, Oud Metha, Dubai,</p>
                 <p>United Arab Emirates</p>
@@ -85,24 +90,47 @@ const Footer = () => {
             </div>
 
             {/* Phone */}
-            <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4 shrink-0" />
+            <div className="flex items-center gap-4">
+              <Phone className="w-5 h-5 shrink-0 text-white" />
               <p>+971 (0) 55 114 1144</p>
             </div>
           </div>
         </div>
 
-        {/* Mobile address (LEFT-ALIGNED like screenshot) */}
+        {/* MOBILE address */}
         <div className="md:hidden mb-10 text-[11px] leading-relaxed text-white/70 space-y-3">
-          <div className="flex items-start gap-2">
-            <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+
+          {/* Location */}
+          <div className="flex items-start gap-4">
+            <svg
+              width="18"
+              height="28"
+              viewBox="0 0 18 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="shrink-0 mt-[2px]"
+            >
+              <circle cx="9" cy="6" r="5" stroke="white" strokeWidth="1.5" />
+              <line
+                x1="9"
+                y1="11"
+                x2="9"
+                y2="26"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+
             <div>
               <p>BK Tower, Oud Metha, Dubai,</p>
               <p>United Arab Emirates</p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Phone className="w-4 h-4 shrink-0" />
+
+          {/* Phone */}
+          <div className="flex items-center gap-4">
+            <Phone className="w-5 h-5 shrink-0 text-white" />
             <p>+971 (0) 55 114 1144</p>
           </div>
         </div>
@@ -126,6 +154,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
+
       </div>
     </footer>
   );
