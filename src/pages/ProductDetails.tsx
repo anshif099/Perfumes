@@ -357,7 +357,7 @@ const ProductDetails: React.FC = () => {
                   alt={product.title}
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute right-4 top-4 rounded-md bg-[#d9a93b] px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                <div className="absolute right-4 top-4  bg-[#d9a93b] px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
                   New Arrival
                 </div>
               </div>
@@ -369,7 +369,7 @@ const ProductDetails: React.FC = () => {
                     type="button"
                     onClick={() => setMainImage(src)}
                     className={classNames(
-                      "h-24 w-full overflow-hidden rounded-lg border-2 border-transparent bg-gray-100 transition-colors",
+                      "h-24 w-full overflow-hidden  border-2 border-transparent bg-gray-100 transition-colors",
                       index === activeThumbIndex && "border-[#d9a93b]"
                     )}
                   >
@@ -404,19 +404,19 @@ const ProductDetails: React.FC = () => {
                   Scent Profile
                 </h3>
                 <div className="space-y-2">
-                  <div className="rounded-lg bg-gray-50 p-3">
+                  <div className=" bg-gray-50 p-3">
                     <div className="text-xs font-semibold">⭐ Top Notes</div>
                     <div className="text-xs text-slate-500">
                       Bergamot • Pink Pepper • Mandarin
                     </div>
                   </div>
-                  <div className="rounded-lg bg-gray-50 p-3">
+                  <div className=" bg-gray-50 p-3">
                     <div className="text-xs font-semibold">♥ Heart Notes</div>
                     <div className="text-xs text-slate-500">
                       Jasmine • Rose • Ylang Ylang
                     </div>
                   </div>
-                  <div className="rounded-lg bg-gray-50 p-3">
+                  <div className=" bg-gray-50 p-3">
                     <div className="text-xs font-semibold">⬇ Base Notes</div>
                     <div className="text-xs text-slate-500">
                       Amber • Vanilla • Sandalwood
@@ -437,7 +437,7 @@ const ProductDetails: React.FC = () => {
                       type="button"
                       onClick={() => setSelectedSize(size)}
                       className={classNames(
-                        "flex flex-col items-center rounded-lg border px-3 py-3 text-center text-sm transition-colors",
+                        "flex flex-col items-center border px-3 py-3 text-center text-sm transition-colors",
                         selectedSize === size
                           ? "border-[#d9a93b] bg-[#d9a93b] text-white"
                           : "border-gray-200 bg-white hover:border-[#d9a93b]"
@@ -513,7 +513,7 @@ const ProductDetails: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleAddToCart}
-                  className="flex-1 rounded-lg bg-[#d9a93b] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-md transition hover:bg-[#c8892f]"
+                  className="flex-1  bg-[#d9a93b] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-md transition hover:bg-[#c8892f]"
                 >
                   Add to Cart
                 </button>
@@ -576,7 +576,7 @@ const ProductDetails: React.FC = () => {
               {/* Collapsible Sections */}
               <div className="space-y-3 pt-3 text-sm text-slate-500">
                 {/* Ingredients */}
-                <div className="overflow-hidden rounded-lg border border-gray-200">
+                <div className="overflow-hidden  border border-gray-200">
                   <button
                     type="button"
                     onClick={() => setOpenIngredients((v) => !v)}
@@ -629,7 +629,7 @@ const ProductDetails: React.FC = () => {
                 </div>
 
                 {/* Returns & Exchanges */}
-                <div className="overflow-hidden rounded-lg border border-gray-200">
+                <div className="overflow-hidden border border-gray-200">
                   <button
                     type="button"
                     onClick={() => setOpenReturns((v) => !v)}
@@ -664,7 +664,7 @@ const ProductDetails: React.FC = () => {
       {/* CART MODAL */}
       {isCartOpen && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60">
-          <div className="flex w-[92%] max-w-2xl flex-col gap-3 rounded-xl bg-white p-4 shadow-xl">
+          <div className="flex w-[92%] max-w-2xl flex-col gap-3 bg-white p-4 shadow-xl">
             <button
               type="button"
               onClick={() => {
@@ -707,7 +707,7 @@ const ProductDetails: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => changeCartQty(index, -1)}
-                          className="rounded-md border border-gray-200 px-2 py-1"
+                          className=" border border-gray-200 px-2 py-1"
                         >
                           -
                         </button>
@@ -715,14 +715,14 @@ const ProductDetails: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => changeCartQty(index, 1)}
-                          className="rounded-md border border-gray-200 px-2 py-1"
+                          className=" border border-gray-200 px-2 py-1"
                         >
                           +
                         </button>
                         <button
                           type="button"
                           onClick={() => removeCartItem(index)}
-                          className="ml-3 rounded-md border border-red-200 px-2 py-1 text-[11px] font-semibold text-red-700"
+                          className="ml-3 border border-red-200 px-2 py-1 text-[11px] font-semibold text-red-700"
                         >
                           Remove
                         </button>
@@ -742,7 +742,7 @@ const ProductDetails: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleCheckoutClick}
-                  className="rounded-lg bg-[#d9a93b] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white hover:bg-[#c8892f]"
+                  className=" bg-[#d9a93b] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white hover:bg-[#c8892f]"
                 >
                   Checkout
                 </button>
@@ -764,7 +764,7 @@ const ProductDetails: React.FC = () => {
                   required
                   value={custName}
                   onChange={(e) => setCustName(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-[#d9a93b]"
+                  className="w-full border border-gray-200 px-3 py-2 text-sm outline-none focus:border-[#d9a93b]"
                 />
                 <input
                   type="tel"
@@ -772,14 +772,14 @@ const ProductDetails: React.FC = () => {
                   required
                   value={custPhone}
                   onChange={(e) => setCustPhone(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-[#d9a93b]"
+                  className="w-full border border-gray-200 px-3 py-2 text-sm outline-none focus:border-[#d9a93b]"
                 />
                 <textarea
                   placeholder="Delivery address"
                   required
                   value={custAddress}
                   onChange={(e) => setCustAddress(e.target.value)}
-                  className="w-full min-h-[80px] rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-[#d9a93b]"
+                  className="w-full min-h-[80px] border border-gray-200 px-3 py-2 text-sm outline-none focus:border-[#d9a93b]"
                 />
                 <div className="mt-1 flex items-center justify-between gap-3 text-xs">
                   <div>
@@ -788,7 +788,7 @@ const ProductDetails: React.FC = () => {
                   </div>
                   <button
                     type="submit"
-                    className="rounded-lg bg-[#d9a93b] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white hover:bg-[#c8892f]"
+                    className=" bg-[#d9a93b] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white hover:bg-[#c8892f]"
                   >
                     Place Order
                   </button>
