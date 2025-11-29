@@ -13,13 +13,14 @@ const OurStory: React.FC = () => {
           <div
             className="
               relative grid w-full overflow-hidden
-              grid-cols-1 grid-rows-4
+              grid-cols-2
               md:grid-cols-2 md:grid-rows-2
             "
           >
             {/* TOP-LEFT: STORY heading */}
             <div
               className="
+                col-span-1
                 flex min-h-[50vh] items-center justify-center
                 bg-white px-6 pt-0 pb-8
                 md:min-h-0 md:px-12 md:py-12
@@ -41,8 +42,8 @@ const OurStory: React.FC = () => {
               </div>
             </div>
 
-            {/* TOP-RIGHT: image */}
-            <div className="relative min-h-[50vh] overflow-hidden md:min-h-0">
+            {/* TOP-RIGHT: image (same row as text on mobile) */}
+            <div className="col-span-1 relative min-h-[50vh] overflow-hidden md:min-h-0 flex items-center justify-center">
               <img
                 src="/images/image12.jpg"
                 alt="Top right model holding perfume"
@@ -50,8 +51,8 @@ const OurStory: React.FC = () => {
               />
             </div>
 
-            {/* BOTTOM-LEFT: image */}
-            <div className="relative min-h-[50vh] overflow-hidden md:min-h-0">
+            {/* BOTTOM-LEFT: image (full width on mobile, left on desktop) */}
+            <div className="col-span-2 md:col-span-1 relative min-h-[50vh] overflow-hidden md:min-h-0">
               <img
                 src="/images/image13.png"
                 alt="Bottom left perfume bottle"
@@ -59,9 +60,10 @@ const OurStory: React.FC = () => {
               />
             </div>
 
-            {/* BOTTOM-RIGHT: About text */}
+            {/* BOTTOM-RIGHT: About text (full width on mobile, right on desktop) */}
             <div
               className="
+                col-span-2 md:col-span-1
                 flex min-h-[50vh] items-center justify-center
                 bg-white px-6 pt-0 pb-8
                 md:min-h-0 md:px-12 md:py-12
@@ -98,36 +100,37 @@ const OurStory: React.FC = () => {
               md:grid-cols-2
             "
           >
-            {/* TEXT SIDE */}
+            {/* IMAGE SIDE – FIRST ON MOBILE, RIGHT ON DESKTOP */}
+            <div className="h-full w-full order-1 md:order-2">
+              <img
+                src="/images/image14.png"
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            {/* TEXT SIDE – SECOND ON MOBILE, LEFT ON DESKTOP */}
             <div
               className="
                 flex flex-col justify-center
                 bg-white px-6 pt-8 pb-12
                 md:px-12 md:py-12
                 lg:px-20 lg:py-16 items-center
+                order-2 md:order-1
               "
             >
               <div className="max-w-[520px] text-center">
                 <h2 className="mb-4 font-['Playfair_Display'] text-[40px] font-semibold text-center">
                   A Heritage of Excellence
                 </h2>
-<p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
-                Beek is built on traditions that transcend time. Our story is
+                <p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
+                  Beek is built on traditions that transcend time. Our story is
                   guided by the enduring elegance of classic perfumery,
                   reimagined with a modern sensibility. Each creation pays
                   homage to the meticulous craft passed down through
                   generations, carrying forward the essence of sophistication.
                 </p>
               </div>
-            </div>
-
-            {/* IMAGE SIDE */}
-            <div className="h-full w-full">
-              <img
-                src="/images/image14.png"
-                alt=""
-                className="h-full w-full object-cover"
-              />
             </div>
           </div>
 
@@ -161,7 +164,8 @@ const OurStory: React.FC = () => {
                 <h2 className="mb-4 font-['Playfair_Display'] text-[40px] font-semibold text-center">
                   Craftsmanship as an Artform
                 </h2>
-<p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">                  To us, crafting a fragrance is an intimate expression of
+                <p className="font-['Inter'] text-[16px] leading-[1.8] text-[#6b7180] text-justify mx-auto">
+                  To us, crafting a fragrance is an intimate expression of
                   mastery. Our perfumers work like sculptors of scent —
                   selecting, layering, and perfecting every note with
                   exceptional care. From rare florals to deep resins, every
