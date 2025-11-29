@@ -13,6 +13,7 @@ import product3 from "@/assets/product3.jpg";
 import product4 from "@/assets/product4.jpg";
 import product5 from "@/assets/product5.jpg";
 import product6 from "@/assets/product6.jpg";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -239,6 +240,7 @@ const ProductCard = ({
 
         {/* Button */}
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center pb-4">
+        <Link to="/Shop">
           <Button
             variant="outline"
             className="
@@ -250,10 +252,10 @@ const ProductCard = ({
               transition-all 
               duration-300
             "
-            onClick={() => (window.location.href = "/Shop")}
           >
             Shop Now
           </Button>
+          </Link>
         </div>
       </div>
     </motion.div>
