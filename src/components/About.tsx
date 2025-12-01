@@ -73,6 +73,7 @@ const About = () => {
                 transition-colors
                 text-base md:text-lg
                 inline-flex items-center justify-center
+                w-[290px] 
               "
             >
               Know More

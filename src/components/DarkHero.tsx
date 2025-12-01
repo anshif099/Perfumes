@@ -52,6 +52,7 @@ const DarkHero = () => {
             bg-gold hover:bg-gold-dark text-white
             px-10 sm:px-12
             shadow-2xl
+            w-[290px] 
           "
         >
           Shop Now

@@ -71,7 +71,7 @@ const Packaging = () => {
              <Link to="/OurStory">
             <Button
               size="lg"
-              className="bg-gold hover:bg-gold-dark text-white px-10 md:px-12"
+              className="bg-gold hover:bg-gold-dark text-white px-10 md:px-12 w-[290px] "
             >
               Know More
             </Button>

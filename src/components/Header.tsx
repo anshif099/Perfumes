@@ -41,7 +41,7 @@ const Header = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="inline-flex items-center justify-center px-3 py-1 text-sm leading-none whitespace-nowrap text-white/95 hover:text-gold transition-colors font-serif"
+              className="inline-flex items-center justify-center px-3 py-1 text-sm leading-none whitespace-nowrap text-white/95 hover:text-gold transition-colors "
             >
               {link.name}
             </MotionLink>
@@ -102,7 +102,7 @@ const Header = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="inline-flex items-center justify-start text-white/95 hover:text-gold transition-colors text-base leading-none font-serif py-3 border-b border-white/5 last:border-b-0"
+                  className="inline-flex items-center justify-start text-white/95 hover:text-gold transition-colors text-base leading-none py-3 border-b border-white/5 last:border-b-0"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}

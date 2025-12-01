@@ -17,14 +17,14 @@ const slides = [
   {
     image: hero2,
     title: "A scent that lingers \n with  elegance.",
-    description: "Created for those who appreciate the art of fine perfume, every layer unfolds with intention and emotion.",
+    description: "Created for those who appreciate the art of fine perfume, every layer \n unfolds with intention and emotion.",
     textColor: "text-white",
     position: "left",
   },
   {
     image: hero3,
     title: "A fragrance made \n to leave a mark.",
-    description: "Its balanced composition enhances your individuality, making every moment feel effortlessly elegant.",
+    description: "Its balanced composition enhances your individuality, making every \n moment feel effortlessly elegant.",
     textColor: "text-white",
     position: "left",
   },
@@ -110,18 +110,20 @@ const HeroCarousel = () => {
 
                 {/* DESCRIPTION */}
                 <motion.p
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className={`
-                    ${slides[currentSlide].textColor}
-                    font-Inter font-normal opacity-95
-                    text-[14px] sm:text-[16px]
-                    max-w-md sm:max-w-lg lg:max-w-xl
-                  `}
-                >
-                  {slides[currentSlide].description}
-                </motion.p>
+  initial={{ y: 30, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ delay: 0.5, duration: 0.8 }}
+  className={`
+    ${slides[currentSlide].textColor}
+    font-Inter font-normal opacity-95
+    text-[14px] sm:text-[16px]
+    max-w-md sm:max-w-lg lg:max-w-xl
+    whitespace-pre-line
+  `}
+>
+  {slides[currentSlide].description}
+</motion.p>
+
 
                 {/* BUTTON */}
                 <motion.div
@@ -135,7 +137,7 @@ const HeroCarousel = () => {
                       size="lg"
                       className={`
                         w-full sm:w-[240px] lg:w-[290px] h-[50px] lg:h-[54px]
-                        font-['Inter'] font-normal
+                        font-Inter font-normal
                         text-[16px] sm:text-[18px] lg:text-[20px] leading-[24px]
                         ${
                           slides[currentSlide].textColor === "text-white"
