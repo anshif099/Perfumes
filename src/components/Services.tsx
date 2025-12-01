@@ -87,7 +87,7 @@ const Services = () => {
               {/* Description: 317x50, Inter, 14px, light */}
               <p
                 className="
-                  font-['Inter']
+                  font-Inter
                   font-light
                   text-[14px]
                   leading-[25px]
