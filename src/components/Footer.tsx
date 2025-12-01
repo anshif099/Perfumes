@@ -20,16 +20,16 @@ const Footer = () => {
               Quick Links
             </h4>
             <nav className="flex flex-col gap-2 text-xs md:text-sm">
-              <a href="#" className="text-white/70 hover:text-gold transition-colors">
+              <a href="/" className="text-white/70 hover:text-gold transition-colors">
                 Home
               </a>
-              <a href="#products" className="text-white/70 hover:text-gold transition-colors">
+              <a href="/Shop" className="text-white/70 hover:text-gold transition-colors">
                 Collections
               </a>
-              <a href="#about" className="text-white/70 hover:text-gold transition-colors">
+              <a href="/OurStory" className="text-white/70 hover:text-gold transition-colors">
                 Our Story
               </a>
-              <a href="#footer" className="text-white/70 hover:text-gold transition-colors">
+              <a href="/Contact" className="text-white/70 hover:text-gold transition-colors">
                 Contact
               </a>
             </nav>
