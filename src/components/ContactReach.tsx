@@ -9,7 +9,7 @@ const ContactReact: React.FC = () => {
         <h2 className="font-['Playfair_Display'] text-[40px] leading-tight text-[#111111] mb-3 text-center">
           How to Reach Us
         </h2>
-        <p className="font-['Inter'] text-[15px] text-[#9CA3AF] text-center mb-12">
+        <p className="font-Inter text-[15px] text-[#9CA3AF] text-center mb-12">
           Multiple ways to connect with our team
         </p>
 
@@ -23,7 +23,7 @@ const ContactReact: React.FC = () => {
             <h3 className="font-['Playfair_Display'] text-[18px] mb-3">
               Visit Our Store
             </h3>
-            <p className="font-['Inter'] text-[14px] text-[#E5E7EB] leading-relaxed">
+            <p className="font-Inter text-[14px] text-[#E5E7EB] leading-relaxed">
               BK Tower, Oud Metha
               <br />
               Dubai, United Arab Emirates
@@ -40,7 +40,7 @@ const ContactReact: React.FC = () => {
             <h3 className="font-['Playfair_Display'] text-[18px] mb-3">
               Call Us Anytime
             </h3>
-            <p className="font-['Inter'] text-[14px] text-[#E5E7EB] leading-relaxed">
+            <p className="font-Inter text-[14px] text-[#E5E7EB] leading-relaxed">
               +971 4 234 1234
               <br />
               +971 4 234 5678
@@ -57,7 +57,7 @@ const ContactReact: React.FC = () => {
             <h3 className="font-['Playfair_Display'] text-[18px] mb-3">
               Email Us
             </h3>
-            <p className="font-['Inter'] text-[14px] text-[#E5E7EB] leading-relaxed">
+            <p className="font-Inter text-[14px] text-[#E5E7EB] leading-relaxed">
               info@beekfragrances.com
               <br />
               support@beekfragrances.com
@@ -74,7 +74,7 @@ const ContactReact: React.FC = () => {
             <h3 className="font-['Playfair_Display'] text-[18px] mb-3">
               Working Hours
             </h3>
-            <p className="font-['Inter'] text-[14px] text-[#E5E7EB] leading-relaxed">
+            <p className="font-Inter text-[14px] text-[#E5E7EB] leading-relaxed">
               Monday – Thursday: 9AM – 9PM
               <br />
               Friday – Saturday: 9AM – 10PM
