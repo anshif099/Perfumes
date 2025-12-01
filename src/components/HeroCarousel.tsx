@@ -2,29 +2,42 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import hero1 from "@/assets/hero1.jpg";
-import hero2 from "@/assets/hero2.jpg";
-import hero3 from "@/assets/hero3.jpg";
+
+// 👉 Import separate images for mobile & desktop (example)
+import hero1Desktop from "@/assets/hero1-desktop.jpg";
+import hero1Mobile from "@/assets/hero1-mobile.jpg";
+
+import hero2Desktop from "@/assets/hero2-desktop.jpg";
+import hero2Mobile from "@/assets/hero2-mobile.jpg";
+
+import hero3Desktop from "@/assets/hero3-desktop.jpg";
+import hero3Mobile from "@/assets/hero3-mobile.jpg";
 
 const slides = [
   {
-    image: hero1,
+    imageDesktop: hero1Desktop,
+    imageMobile: hero1Mobile,
     title: "Where Elegance \nBreathes in Every Note",
-    description: "Each layer unfolds with grace, creating a scent as unique as you.",
+    description:
+      "Each layer unfolds with grace, creating a scent as unique as you.",
     textColor: "text-white",
-    position: "right", // text block on right side, but text INSIDE is left-aligned
+    position: "right", // text block on right, text inside is left-aligned
   },
   {
-    image: hero2,
+    imageDesktop: hero2Desktop,
+    imageMobile: hero2Mobile,
     title: "A scent that lingers \n with  elegance.",
-    description: "Created for those who appreciate the art of fine perfume, every layer \n unfolds with intention and emotion.",
+    description:
+      "Created for those who appreciate the art of fine perfume, every layer \n unfolds with intention and emotion.",
     textColor: "text-white",
     position: "left",
   },
   {
-    image: hero3,
+    imageDesktop: hero3Desktop,
+    imageMobile: hero3Mobile,
     title: "A fragrance made \n to leave a mark.",
-    description: "Its balanced composition enhances your individuality, making every \n moment feel effortlessly elegant.",
+    description:
+      "Its balanced composition enhances your individuality, making every \n moment feel effortlessly elegant.",
     textColor: "text-white",
     position: "left",
   },
@@ -34,9 +47,10 @@ const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    const interval = setInterval(
+      () => setCurrentSlide((prev) => (prev + 1) % slides.length),
+      5000
+    );
     return () => clearInterval(interval);
   }, []);
 
@@ -44,15 +58,17 @@ const HeroCarousel = () => {
 
   const isRight = slides[currentSlide].position === "right";
 
+  const activeSlide = slides[currentSlide];
+
   return (
     <section
-  className="
-    relative w-full
-    h-screen
-    overflow-hidden
-    bg-black
-  "
->
+      className="
+        relative w-full
+        h-screen
+        overflow-hidden
+        bg-black
+      "
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -62,15 +78,22 @@ const HeroCarousel = () => {
           transition={{ duration: 1 }}
           className="absolute inset-0"
         >
-          {/* Background image fully covering section */}
-          <div
-            className="
-              w-full h-full
-              bg-center bg-cover
-              relative
-            "
-            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
-          >
+          {/* BACKGROUND IMAGE (desktop & mobile custom) */}
+          <div className="w-full h-full relative">
+            <picture>
+              {/* Desktop / Tablet */}
+              <source
+                media="(min-width: 768px)"
+                srcSet={activeSlide.imageDesktop}
+              />
+              {/* Mobile */}
+              <img
+                src={activeSlide.imageMobile}
+                alt="Hero background"
+                className="w-full h-full object-cover"
+              />
+            </picture>
+
             {/* Dark overlay for readability */}
             <div className="absolute inset-0 bg-black/30" />
 
@@ -97,7 +120,7 @@ const HeroCarousel = () => {
                   transition={{ delay: 0.3, duration: 0.8 }}
                   className={`
                     mb-4 sm:mb-6
-                    ${slides[currentSlide].textColor} drop-shadow-2xl
+                    ${activeSlide.textColor} drop-shadow-2xl
                     font-['Playfair_Display']
                     font-semibold  
                     leading-tight
@@ -105,25 +128,24 @@ const HeroCarousel = () => {
                     whitespace-pre-line
                   `}
                 >
-                  {slides[currentSlide].title}
+                  {activeSlide.title}
                 </motion.h1>
 
                 {/* DESCRIPTION */}
                 <motion.p
-  initial={{ y: 30, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ delay: 0.5, duration: 0.8 }}
-  className={`
-    ${slides[currentSlide].textColor}
-    font-Inter font-normal opacity-95
-    text-[14px] sm:text-[16px]
-    max-w-md sm:max-w-lg lg:max-w-xl
-    whitespace-pre-line
-  `}
->
-  {slides[currentSlide].description}
-</motion.p>
-
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className={`
+                    ${activeSlide.textColor}
+                    font-Inter font-normal opacity-95
+                    text-[14px] sm:text-[16px]
+                    max-w-md sm:max-w-lg lg:max-w-xl
+                    whitespace-pre-line
+                  `}
+                >
+                  {activeSlide.description}
+                </motion.p>
 
                 {/* BUTTON */}
                 <motion.div
@@ -140,7 +162,7 @@ const HeroCarousel = () => {
                         font-Inter font-normal
                         text-[16px] sm:text-[18px] lg:text-[20px] leading-[24px]
                         ${
-                          slides[currentSlide].textColor === "text-white"
+                          activeSlide.textColor === "text-white"
                             ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black"
                             : "bg-transparent border-2 border-black text-black hover:bg-black hover:text-white"
                         }
