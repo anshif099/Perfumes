@@ -138,7 +138,7 @@ const HeroContact: React.FC = () => {
             </p>
             <Link to="/Shop">
               <button className="mt-10 w-[220px] sm:w-[245px] h-[52px] sm:h-[56px] bg-[#E1B159] hover:bg-[#f0c465] flex items-center justify-center gap-2 transition">
-                <span className="font-['Inter'] font-semibold text-[15px] sm:text-[16px] text-black">
+                <span className="font-Inter font-semibold text-[15px] sm:text-[16px] text-black">
                   Explore Collections
                 </span>
                 <span className="text-black text-xl">→</span>
