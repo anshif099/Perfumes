@@ -14,6 +14,8 @@ import Loading from "./components/Loading";
 
 const queryClient = new QueryClient();
 
+import ScrollToTop from "./components/ScrollToTop";
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,14 +38,15 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-         <Routes>
-  <Route path="/" element={<Index />} />
-  <Route path="/Shop" element={<Shop />} />
-  <Route path="/ProductDetails" element={<ProductDetails />} />
-  <Route path="/OurStory" element={<OurStory />} />
-  <Route path="/Contact" element={<Contact />} />
-  <Route path="*" element={<NotFound />} />
-</Routes>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/Shop" element={<Shop />} />
+            <Route path="/ProductDetails" element={<ProductDetails />} />
+            <Route path="/OurStory" element={<OurStory />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
 
         </BrowserRouter>
       </TooltipProvider>
