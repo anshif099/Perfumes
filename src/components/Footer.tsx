@@ -140,7 +140,7 @@ const Footer = () => {
           className="border-t border-white/10 pt-4 mt-2 text-[11px] md:text-xs text-white/60
           flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left"
         >
-          <p>Copyright 2025 beekperfumes. All right reserved</p>
+          <p>Copyright 2026 beekperfumes. All right reserved</p>
 
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-end gap-x-4 gap-y-1">
             <a href="#" className="hover:text-gold transition-colors">
