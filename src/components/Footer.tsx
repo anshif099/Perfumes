@@ -1,5 +1,6 @@
 import logo from "@/assets/logo.png";
 import { Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -20,18 +21,18 @@ const Footer = () => {
               Quick Links
             </h4>
             <nav className="flex flex-col gap-2 text-xs md:text-sm">
-              <a href="/" className="text-white/70 hover:text-gold transition-colors">
+              <Link to="/" className="text-white/70 hover:text-gold transition-colors">
                 Home
-              </a>
-              <a href="/Shop" className="text-white/70 hover:text-gold transition-colors">
+              </Link>
+              <Link to="/Shop" className="text-white/70 hover:text-gold transition-colors">
                 Collections
-              </a>
-              <a href="/OurStory" className="text-white/70 hover:text-gold transition-colors">
+              </Link>
+              <Link to="/OurStory" className="text-white/70 hover:text-gold transition-colors">
                 Our Story
-              </a>
-              <a href="/Contact" className="text-white/70 hover:text-gold transition-colors">
+              </Link>
+              <Link to="/Contact" className="text-white/70 hover:text-gold transition-colors">
                 Contact
-              </a>
+              </Link>
             </nav>
           </div>
 
